@@ -1,0 +1,18 @@
+.href{
+	position: absolute;
+	top:90%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 25px;
+	font-weight: 700;
+	color: rgb(252, 254, 255);
+	background-color: rgba(255, 255, 255, 0.222);
+	padding: 20px 15px ;
+	border-radius: 5px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	box-shadow: 0 20px 50px rgba(0, 0, 0, 0.678);
+}
+
+
+

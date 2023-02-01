@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'verona_serial-regular';
+	src: url('../public/fonts/verona_serial-regular-webfont.woff2') format('woff2'),
+		  url('../public//fonts//verona_serial-regular-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+* {
+	margin : 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'verona_serial-regular';
+	font-weight: 400;
+	
+}
+html{
+	background-color: rgb(54,5,26);
+}
+
+.button__menu{
+	background-color:rgb(54,5,26) ;
+}
+.reporty__logo-size{
+	height: 90px;
+	width: 90px;
+}
+
+.reporty__logo-middle-size{
+	height: 150px;
+	width: 300px;
+}
+
+header {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+}
+
+.nav {
+	display: flex;
+	padding: 0 16px;
+	justify-content: space-between;
+	align-items: center;
+	background-color: rgba(95, 96, 97, 0.384);
+
+	/* background-color: #f1f1f1; */
+}
+
+.nav__menu-bar{
+	display: flex;
+	flex-direction: column;
+	row-gap: 6px;
+	cursor: pointer;
+	justify-self: end;
+	margin-left: auto;
+}
+
+.nav__menu-bar div{
+	width: 40px;
+	height: 4px;
+	background-color: rgba(221, 218, 218, 0.76);
+	border-radius: 2px;
+}
+
+.nav__menu-list {
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	top: 90px;
+	width: 288px;
+	right: -288px;
+	row-gap: 24px;
+	padding: 24px 16px;
+	min-height: calc(100vh - 60px);
+	transition: all 0.3s;
+}
+
+.nav__menu-list.active{
+	right: 0;
+	background-color: rgba(95, 96, 97, 0.384);
+}
+
+.nav__link {
+	font-size: 18px;
+	position: relative;
+	transition: all 0.2s;
+}
+
+.nav__link.active{
+	font-weight: bold;
+}
+.nav__link:hover{
+	font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+	.nav__logo-middle{
+		display: none;
+	}
+	.nav__menu-list.active{
+		align-self: flex-end;
+		
+	}
+}
+
+
+@media screen and (min-width: 768px) {
+	.nav__menu-bar{
+		display: none;
+	}
+
+
+	.nav__menu-list{
+		position: unset;
+		min-height: fit-content;
+		width: fit-content;
+		flex-direction: row;
+		align-items: center;
+		column-gap: 24px;
+	}
+
+	.nav__link::before {
+		content: '';
+		position: absolute;
+		width: 0%;
+		bottom: -16px;
+		left: 0;
+		height: 3px;
+		transition: all 0.2s;
+		background-color: white;
+	}
+	
+	.nav__link:hover::before,
+	.nav__link.active::before
+	{
+		width: 100%;
+	}
+
+	
+}
