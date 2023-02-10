@@ -30,16 +30,21 @@ const carte = () => {
 	}, [category, category.length])
 
 	const deleteCategoryInside = (id) => {
-		console.log('ID===>', id);
 		dispatch(deleteCategory(id))
 	}
 
 	const login = useSelector((state) => state.user.login);
 
+	function unicId() {
+		return Math.floor(Math.random() * 100000) + 10000;
+	}
 	const findId = (id) => {
-		const findMenuItem = menu.filter(el => el.id === id)
-		const findCategory = category.filter(el => el.id === findMenuItem[0].category_id)
+		console.log('FINDID', id)
+		const findMenuItem = menu.filter(el => el._id === id)
+		console.log(findMenuItem)
+		const findCategory = category.filter(el => el._id === findMenuItem[0].category)
 		const obj = { ...findMenuItem[0], category: findCategory[0].name }
+		console.log('OBJJJJJJ',obj)
 		setMenuItem(obj)
 	}
 
@@ -56,7 +61,7 @@ const carte = () => {
 							alt="Take a vin"
 							width="100%"
 							height="100%"
-							layout='responsive'
+							priority="low"
 						/>
 					</div>
 					<div>
@@ -66,9 +71,9 @@ const carte = () => {
 						{login && <Button onClick={() => setOpen(true)} style={{ textDecoration: 'none', color: 'white', opacity: '0.8', border: '1px solid #000', position: 'relative', top: '40px',  background: 'rgb(68, 4, 31)' }}>Add article</Button>}
 						<div className={styles.carteTop} >
 							{category.map((item) =>
-								<div>
-									<Articles category={item} key={item.id} findId={findId} setOpen={setOpen} />
-									{login && <button onClick={() => deleteCategoryInside(item.id)}>Delete Category</button>}
+								<div key={unicId()}>
+									<Articles category={item} key={unicId()} findId={findId} setOpen={setOpen} />
+									{login && <button onClick={() => deleteCategoryInside(item._id)}>Delete Category</button>}
 								</div>
 							)}
 						</div>

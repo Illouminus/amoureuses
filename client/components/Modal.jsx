@@ -34,7 +34,7 @@ const styleButton = {
 
 const modal = ({ open, handleClose, menuItem, setMenuItem }) => {
 	const [newItem, setnewItem] = useState({
-		id: 0,
+		id: '',
 		name: '',
 		price: 0,
 		category: '',
@@ -46,7 +46,7 @@ const modal = ({ open, handleClose, menuItem, setMenuItem }) => {
 		if (menuItem) {
 			setnewItem({
 				...newItem,
-				id: menuItem.id,
+				id: menuItem._id,
 				name: menuItem.name,
 				price: menuItem.price,
 				category: menuItem.category,
@@ -64,6 +64,7 @@ const modal = ({ open, handleClose, menuItem, setMenuItem }) => {
 	}
 
 	const sendNewItem = () => {
+		console.log(newItem)
 		dispatch(addValue(newItem))
 		setMenuItem({})
 	}
@@ -78,9 +79,9 @@ const modal = ({ open, handleClose, menuItem, setMenuItem }) => {
 			<Box sx={style}>
 				<Typography id="modal-modal-title" variant="h6" component="h2">
 				</Typography>
-				<TextField id="filled-basic" label="Category" variant="filled" required="required" size="small" style={{ margin: '10px' }} name='category' onChange={newItemHandler} defaultValue={menuItem.category} />
-				<TextField id="filled-basic" label="Name" variant="filled" required="required" size="small" style={{ margin: '10px' }} name='name' onChange={newItemHandler} defaultValue={menuItem.name} />
-				<TextField id="filled-basic" label="Price" variant="filled" required="required" size="small" style={{ margin: '10px' }} name='price' onChange={newItemHandler} defaultValue={menuItem.price} />
+				<TextField id="filled-basic" label="Category" variant="filled" required={true} size="small" style={{ margin: '10px' }} name='category' onChange={newItemHandler} defaultValue={menuItem.category} />
+				<TextField id="filled-basic" label="Name" variant="filled" required={true} size="small" style={{ margin: '10px' }} name='name' onChange={newItemHandler} defaultValue={menuItem.name} />
+				<TextField id="filled-basic" label="Price" variant="filled" required={true} size="small" style={{ margin: '10px' }} name='price' onChange={newItemHandler} defaultValue={menuItem.price} />
 				<TextField id="filled-basic" label="Origin" variant="filled" size="small" style={{ margin: '10px' }} name='origin' onChange={newItemHandler} defaultValue={menuItem.origin} />
 				<TextField id="outlined-multiline-flexible" label="Description" style={{ margin: '10px' }} multiline name='description' onChange={newItemHandler} defaultValue={menuItem.description} />
 				<Stack direction="row" spacing={2}>

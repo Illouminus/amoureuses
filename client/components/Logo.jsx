@@ -9,7 +9,7 @@ const Logo = () => {
 				alt="Logotip of the web-site"
 				width="100%"
 				height="100%"
-				layout='responsive'
+				priority="high"
 			/>
 		</div>
 

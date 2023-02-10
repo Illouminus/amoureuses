@@ -12,6 +12,7 @@ const Articles = ({ category, findId, setOpen }) => {
 	const dispatch = useDispatch();
 	const menu = useSelector((state) => state.carte.menu)
 	const [activeDelete, setactiveDelete] = useState(0)
+	
 	const calculateWidth = () => {
 		return menu.reduce((max, el) => {
 			return el.name.length > max.length ? el.name : max;
@@ -34,19 +35,19 @@ const Articles = ({ category, findId, setOpen }) => {
 	return (
 		<>
 			<h2 className={styles.carte__vins}>{category.name}</h2>
-			{menu.map(item => category.id === item.category_id && (
-				<div className={styles.link} key={item.id}>
+			{menu.map(item => category._id === item.category && (
+				<div className={styles.link} key={item._id}>
 
 
 					<li style={{ width: length }} className={styles.list}>{item.name}<span className={styles.vins__prix}>{`${item.price} €`}</span></li>
 					<div className={styles.spanGroup}>
 						{login && <span className={classnames(styles.contour__delete, activeDelete === item.id && styles.active)} onClick={() => {
-							deleteHendler(item.id)
+							deleteHendler(item._id)
 						}}>
 							<span></span><p className={styles.contour__delete__text}>Delete</p>
 						</span>}
 						{login && <span className={styles.editSpan} onClick={() => {
-							findId(item.id)
+							findId(item._id)
 							setOpen(true)
 						}}>
 							<svg
@@ -57,8 +58,8 @@ const Articles = ({ category, findId, setOpen }) => {
 								xmlns="http://www.w3.org/2000/svg"
 							>
 								<path
-									fill-rule="evenodd"
-									clip-rule="evenodd"
+									fillRule="evenodd"
+									clipRule="evenodd"
 									d="M21.2635 2.29289C20.873 1.90237 20.2398 1.90237 19.8493 2.29289L18.9769 3.16525C17.8618 2.63254 16.4857 
 								2.82801 15.5621 3.75165L4.95549 14.3582L10.6123 20.0151L21.2189 9.4085C22.1426 8.48486 22.338 7.1088 21.8053 5.99367L22.6777 
 								5.12132C23.0682 4.7308 23.0682 4.09763 22.6777 3.70711L21.2635 2.29289ZM16.9955 10.8035L10.6123 17.1867L7.78392 14.3582L14.1671 
@@ -74,7 +75,6 @@ const Articles = ({ category, findId, setOpen }) => {
 							<p>
 
 								Edit</p>
-
 						</span>}
 					</div>
 				</div>
