@@ -8,26 +8,42 @@ import Articles from '../components/Articles';
 import { useSelector, useDispatch } from 'react-redux';
 import { getInitialValue, deleteCategory } from '../store/carte/actions'
 import Navbar from '../components/Navbar'
-const carte = () => {
+
+
+
+import connectDB from "../utils/connectDB";
+import Category from "../models/Category";
+import Carte from "../models/Carte"
+
+const carte = ({initialProps}) => {
+	console.log(initialProps)
+	const initial = JSON.parse(initialProps)
+	console.log('OBJECT FROM INITAL PRPOS', initial)
 	const dispatch = useDispatch();
-	const category = useSelector((state) => state.carte.category)
-	const menu = useSelector((state) => state.carte.menu)
+	//const category = useSelector((state) => state.carte.category)
+	//const menu = useSelector((state) => state.carte.menu)
+	const category = initial.findResultCategory
+	console.log('CATEGORY FROM REDUX', category)
+	const menu = initial.findResultCarte
+	console.log('MENU FROM REDUX', menu)
 	const [menuItem, setMenuItem] = useState({})
-	const [isLoading, setIsLoading] = useState(true)
+	const [isLoading, setIsLoading] = useState(false)
 	const [open, setOpen] = useState(false);
 
 
-	useEffect(() => {
-		dispatch(getInitialValue())
-	}, [])
+	//useEffect(() => {
+	//	dispatch(getInitialValue())
+	//}, [])
 
-	useEffect(() => {
-		if (category && category.length) {
-			setIsLoading(false)
-		} else {
-			setIsLoading(true)
-		}
-	}, [category, category.length])
+
+	// проверить что это, загрузка?
+//	useEffect(() => {
+//		if (category && category.length) {
+//			setIsLoading(false)
+//		} else {
+//			setIsLoading(true)
+//		}
+//	}, [category, category.length])
 
 	const deleteCategoryInside = (id) => {
 		dispatch(deleteCategory(id))
@@ -39,12 +55,9 @@ const carte = () => {
 		return Math.floor(Math.random() * 100000) + 10000;
 	}
 	const findId = (id) => {
-		console.log('FINDID', id)
 		const findMenuItem = menu.filter(el => el._id === id)
-		console.log(findMenuItem)
 		const findCategory = category.filter(el => el._id === findMenuItem[0].category)
 		const obj = { ...findMenuItem[0], category: findCategory[0].name }
-		console.log('OBJJJJJJ',obj)
 		setMenuItem(obj)
 	}
 
@@ -72,7 +85,7 @@ const carte = () => {
 						<div className={styles.carteTop} >
 							{category.map((item) =>
 								<div key={unicId()}>
-									<Articles category={item} key={unicId()} findId={findId} setOpen={setOpen} />
+									<Articles category={item} key={unicId()} findId={findId} setOpen={setOpen} menu={menu}/>
 									{login && <button onClick={() => deleteCategoryInside(item._id)}>Delete Category</button>}
 								</div>
 							)}
@@ -85,3 +98,15 @@ const carte = () => {
 }
 
 export default carte
+
+export async function getServerSideProps(context) {
+	await connectDB();
+	const [findResultCategory, findResultCarte] = await Promise.all([
+		Category.find({}),
+		Carte.find({}),
+	]);
+
+	return {
+		props: { initialProps: JSON.stringify({ findResultCategory, findResultCarte }) },
+	};
+}

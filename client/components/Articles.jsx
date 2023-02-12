@@ -8,9 +8,10 @@ import { deleteValue } from '../store/carte/actions'
 
 
 
-const Articles = ({ category, findId, setOpen }) => {
+const Articles = ({ category, findId, setOpen, menu }) => {
+	console.log(category)
 	const dispatch = useDispatch();
-	const menu = useSelector((state) => state.carte.menu)
+	//const menu = useSelector((state) => state.carte.menu)
 	const [activeDelete, setactiveDelete] = useState(0)
 	
 	const calculateWidth = () => {
@@ -29,6 +30,8 @@ const Articles = ({ category, findId, setOpen }) => {
 			dispatch(deleteValue(id))
 		}, 1000);
 	}
+
+
 
 	const login = useSelector((state) => state.user.login);
 

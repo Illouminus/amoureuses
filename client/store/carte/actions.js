@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 export const getInitialValue = createAsyncThunk('menu/value', async () => {
-	const response = await axios.get('http://localhost:4000/initialValues');
+	const response = await axios.get('/api/carte/initial');
 	return response.data
 });
 
