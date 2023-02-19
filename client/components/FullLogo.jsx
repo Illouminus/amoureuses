@@ -7,8 +7,8 @@ const FullLogo = () => {
 			<Image
 				src={logoMiddle}
 				alt="Logotip of the web-site"
-				width="100%"
-				height="100%"
+				width="40px"
+				height="40px"
 				priority="high"
 			/>
 		</div>

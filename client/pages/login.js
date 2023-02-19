@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import Router from "next/router";
+import {useRouter} from 'next/router'
+import {signIn, useSession} from "next-auth/react"
 import styles from '../styles/login.module.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { getLogin } from '../store/user/actions'
 import Navbar from '../components/Navbar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faKey, faLock } from '@fortawesome/free-solid-svg-icons'
@@ -10,26 +10,34 @@ import SnackBar from '../components/SnackBar'
 import withAuth from '../components/Auth';
 
 
-const login = () => {
 
-	// MODAL HAND 
+const login = () => {
+	// MODAL HAND
 	const [open, setOpen] = useState(false);
 	const [statusLogin, setStatusLogin] = useState('')
+	const {status, data} = useSession()
 	const handleClose = (event, reason) => {
 		if (reason === 'clickaway') {
 			return;
 		}
 		setOpen(false);
 	};
-
+	const router = useRouter()
 	const dispatch = useDispatch();
 	const [loginForm, setloginForm] = useState({ login: '', password: '' })
 	const handleSubmit = async (e) => {
 		e.preventDefault()
-		const result = await dispatch(getLogin(loginForm))
-		console.log('RETURN FROM DISPATCH', result.payload.status);
-		if (result.payload.status === true) {
+		const response = await signIn('credentials', {
+			login: loginForm.login,
+			password: loginForm.password,
+			redirect: false
+		})
+
+		if (response.ok === true) {
 			setStatusLogin('success')
+			setTimeout(() => {
+				router.push('/')
+			}, 500)
 		} else {
 			setStatusLogin('error')
 		}

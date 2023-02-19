@@ -16,7 +16,7 @@
 	box-sizing: border-box;
 	font-family: 'verona_serial-regular';
 	font-weight: 400;
-	
+
 }
 html{
 	background-color: rgb(54,5,26);
@@ -104,7 +104,7 @@ header {
 	}
 	.nav__menu-list.active{
 		align-self: flex-end;
-		
+
 	}
 }
 
@@ -134,12 +134,12 @@ header {
 		transition: all 0.2s;
 		background-color: white;
 	}
-	
+
 	.nav__link:hover::before,
 	.nav__link.active::before
 	{
 		width: 100%;
 	}
 
-	
+
 }

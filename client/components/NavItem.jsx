@@ -2,12 +2,15 @@ import Link from 'next/link'
 import React from 'react'
 import {  useDispatch } from 'react-redux';
 import { logoutThunk } from '../store/user/actions'
+import { signOut } from "next-auth/react"
 
 const NavItem = ({ href, text, active }) => {
 	const dispatch = useDispatch()
 
-	const exitHandler = () => {
-		dispatch(logoutThunk());
+	const exitHandler = async () => {
+		// dispatch(logoutThunk());
+		const response = await signOut()
+		console.log(response)
 		localStorage.clear();
 		console.log('EXIT')
 	}

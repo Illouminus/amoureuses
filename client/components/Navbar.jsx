@@ -5,12 +5,14 @@ import FullLogo from './FullLogo'
 import Logo from './Logo'
 import NavItem from './NavItem'
 import { useSelector, useDispatch } from 'react-redux';
+import {useSession} from "next-auth/react";
 
 
 const Navbar = ({ styleOther }) => {
+	const {status, data} = useSession()
 	const [navActive, setNavActive] = useState(false)
 	const [activateIdx, setActivateIdx] = useState(0)
-	const login = useSelector((state) => state.user.login);
+	const login = status === "authenticated";
 	const MENU_LIST = login ? [{ text: "Carte", href: '/carte' }, { text: "Contact", href: '/contact' }, { text: "Logout", href: '/', }] :
 		[{ text: "Carte", href: '/carte' }, { text: "Contact", href: '/contact' }, { text: "Login", href: '/login' },]
 
@@ -23,7 +25,7 @@ const Navbar = ({ styleOther }) => {
 					<div></div>
 					<div></div>
 				</div>
-				<Link href={'/'} style={{ textDecoration: 'none' }} onClick={() => setActivateIdx(0)}><div className='nav__logo-middle'><FullLogo /></div></Link>
+				<Link href={'/'} style={{ textDecoration: 'none' }} onClick={() => setActivateIdx(0)}></Link>
 				<div className={`${navActive ? 'active' : ""} nav__menu-list`} style={styleOther}>
 					{MENU_LIST.map((menu, idx) => {
 						return <div

@@ -32,7 +32,7 @@ const styleButton = {
 	bgcolor: 'none'
 }
 
-const modal = ({ open, handleClose, menuItem, setMenuItem }) => {
+const modal = ({ open, handleClose, menuItem, setMenuItem, edditOrAdd }) => {
 	const [newItem, setnewItem] = useState({
 		id: '',
 		name: '',
@@ -65,7 +65,9 @@ const modal = ({ open, handleClose, menuItem, setMenuItem }) => {
 
 	const sendNewItem = () => {
 		console.log(newItem)
-		dispatch(addValue(newItem))
+		// setMenuItem(newItem)
+		// dispatch(addValue(newItem))
+		edditOrAdd(newItem)
 		setMenuItem({})
 	}
 

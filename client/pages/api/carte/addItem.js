@@ -1,15 +1,16 @@
-import connectDB from "../../../utils/connectDB";
+import dbConnect from "../../../utils/mangoDB";
 import Category from "../../../models/Category";
 import Carte from "../../../models/Carte"
 
 export default async function addOrEditValues (req, res) {
     try {
-        const response = await connectDB()
+        const response = await dbConnect()
         if (response) {
             console.log('Connection with DB')
             const {
                 category, name, description, price, origin
             } = req.body;
+            console.log(category, name, description, price, origin)
             const uperName = name.charAt(0).toUpperCase() + name.slice(1);
             const uperCategory = category.charAt(0).toUpperCase() + category.slice(1);
             let categoryDoc = await Category.findOne({ name: uperCategory });
