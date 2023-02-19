@@ -84,7 +84,6 @@ const carte = ({initialProps}) => {
 		const obj = { ...findMenuItem[0], category: findCategory[0].name }
 		setMenuItem(obj)
 	}
-
 	const styleCard = { backgroundColor: '#fff0' }
 	return (
 		<div>
