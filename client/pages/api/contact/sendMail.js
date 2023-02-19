@@ -6,7 +6,7 @@ export default async function SendMail (req, res) {
                 firstName, lastName, email, telephone, message,
             } = req.body;
         console.log(firstName, lastName, email, telephone, message,)
-                const sendMail = main(firstName, lastName, email, telephone, message);
+                const sendMail = await main(firstName, lastName, email, telephone, message);
                 if (sendMail) {
                     res.send({ status: true });
                 } else {
