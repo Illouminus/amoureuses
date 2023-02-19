@@ -10,7 +10,6 @@ import {useSession} from "next-auth/react";
 
 
 const Articles = ({ category, findId, setOpen, menu, deleteItem }) => {
-	const dispatch = useDispatch();
 	const [activeDelete, setactiveDelete] = useState(0)
 	const {status, data} = useSession()
 	const calculateWidth = () => {
@@ -25,12 +24,10 @@ const Articles = ({ category, findId, setOpen, menu, deleteItem }) => {
 
 	const deleteHendler = (id) => {
 		setactiveDelete(id)
-
 	}
 
 
 
-	const login = useSelector((state) => state.user.login);
 
 	return (
 		<>

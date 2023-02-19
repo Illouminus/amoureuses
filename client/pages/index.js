@@ -6,6 +6,7 @@ import Head from 'next/head'
 
 
 const Index = () => {
+	const styleCard = { backgroundColor: 'inherit' }
 	return (
 		<>
 			<Head>
@@ -21,7 +22,7 @@ const Index = () => {
 				width: '100vw',
 				height: '100vh',
 			}}>
-				<Navbar />
+				<Navbar styleMain={styleCard}/>
 				<Link href={'/'} className={styles.href}>
 					<span></span>
 					<span></span>

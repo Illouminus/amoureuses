@@ -7,8 +7,6 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import Stack from '@mui/material/Stack';
-import { useDispatch } from 'react-redux';
-import { addValue } from '../store/carte/actions'
 
 
 const style = {
@@ -58,17 +56,21 @@ const modal = ({ open, handleClose, menuItem, setMenuItem, edditOrAdd }) => {
 
 	}, [menuItem])
 
-	const dispatch = useDispatch();
 	const newItemHandler = (e) => {
 		setnewItem({ ...newItem, [e.target.name]: e.target.value })
 	}
 
 	const sendNewItem = () => {
-		console.log(newItem)
-		// setMenuItem(newItem)
-		// dispatch(addValue(newItem))
 		edditOrAdd(newItem)
 		setMenuItem({})
+		setnewItem({
+			id: '',
+			name: '',
+			price: 0,
+			category: '',
+			description: '',
+			origin: ''
+		})
 	}
 
 	return (

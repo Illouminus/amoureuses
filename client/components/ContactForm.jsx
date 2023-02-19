@@ -24,7 +24,7 @@ const ContactForm = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const response = await axios.post('http://localhost:4000/contact', formData)
+		const response = await axios.post('/api/contact/sendMail', formData)
 		if (response.data.status === true) {
 			setstatusEmail(true)
 		} else {

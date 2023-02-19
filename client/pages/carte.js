@@ -6,14 +6,12 @@ import Image from 'next/image'
 import Modal from '../components/Modal'
 import Button from '@mui/material/Button';
 import Articles from '../components/Articles';
-import { useSelector, useDispatch } from 'react-redux';
-import {setData} from '../store/carte/index'
-import {  deleteCategory } from '../store/carte/actions'
 import Navbar from '../components/Navbar'
 import dbConnect from "../utils/mangoDB"
 import Category from "../models/Category";
 import Carte from "../models/Carte"
 import axios from "axios";
+import Head from "next/head";
 
 const carte = ({initialProps}) => {
 	// Get initials data, parse and sate states
@@ -87,23 +85,32 @@ const carte = ({initialProps}) => {
 	const styleCard = { backgroundColor: '#fff0' }
 	return (
 		<div>
+			<Head>
+				<title>Carte</title>
+				<meta name="keywords" content="vin, bar, soiree, drinks, drink, night, vine"/>
+				<meta name="description" content="this is a website of the vine bar"/>
+				<meta charSet="utf-8"/>
+			</Head>
 			<Navbar styleOther={styleCard} />
-			<Modal open={open} handleClose={() => setOpen(false)} menuItem={menuItem} setMenuItem={setMenuItem} edditOrAdd={edditOrAdd} />
+			<Modal open={open} handleClose={() => {
+				setOpen(false)
+				setMenuItem({})
+			}} menuItem={menuItem} setMenuItem={setMenuItem} edditOrAdd={edditOrAdd} />
 			{!isLoading && (
 				<div className={styles.container}>
 					<div className={styles.buttle}>
 						<Image
 							src={buttelOfVine}
 							alt="Take a vin"
-							width="100%"
-							height="100%"
+							width="100vw"
+							height="100vh"
 							priority="low"
 						/>
 					</div>
 					<div>
 					</div>
 					<div className={styles.carte}>
-						<h1>DECOUVREZ NOTRE CARTE</h1>
+						<h1 >DECOUVREZ NOTRE CARTE</h1>
 						{status === "authenticated" && <Button onClick={() => setOpen(true)} style={{ textDecoration: 'none', color: 'white', opacity: '0.8', border: '1px solid #000', position: 'relative', top: '40px',  background: 'rgb(68, 4, 31)' }}>Add article</Button>}
 						<div className={styles.carteTop} >
 							{category.map((item) =>

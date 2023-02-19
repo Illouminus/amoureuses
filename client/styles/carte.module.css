@@ -1,12 +1,12 @@
 .container div {
 	color: rgb(68, 4, 31);
-
 }
+
+
 
 .container{
 	display: flex;
 	height: 100%;
-
 }
 
 .spanGroup{
@@ -46,14 +46,13 @@
 	border: 2px solid rgb(149, 146, 146);
 	border-radius: 10px;
 	padding: 20px;
-	background: rgba(180, 180, 180, 0.865)
+	background: rgba(180, 180, 180, 0.865);
+
 }
 
 .carte h1{
 	font-size: 22px;
-	position: absolute;
-	top: 15px;
-	left: 30px;
+	text-align: center;
 }
 
 .carte li {

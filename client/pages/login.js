@@ -23,7 +23,7 @@ const login = () => {
 		setOpen(false);
 	};
 	const router = useRouter()
-	const dispatch = useDispatch();
+
 	const [loginForm, setloginForm] = useState({ login: '', password: '' })
 	const handleSubmit = async (e) => {
 		e.preventDefault()
@@ -44,7 +44,7 @@ const login = () => {
 		setOpen(true)
 	}
 
-	const login = useSelector((state) => state.user.login);
+
 
 	const styleCard = { backgroundColor: '#fff0' }
 	return (
@@ -87,4 +87,4 @@ const login = () => {
 	)
 }
 
-export default withAuth(login)
+export default login
