@@ -23,13 +23,12 @@ const Index = () => {
 				height: '100vh',
 			}}>
 				<Navbar styleMain={styleCard}/>
-				<Link href={'/'} className={styles.href}>
+				<Link href={'/contact'} className={styles.href}>
 					<span></span>
 					<span></span>
 					<span></span>
 					<span></span>
 					Contact
-
 				</Link>
 
 

@@ -12,7 +12,6 @@ const Navbar = ({ styleOther, styleMain}) => {
 	const {status, data} = useSession()
 	const [navActive, setNavActive] = useState(false)
 	const [activateIdx, setActivateIdx] = useState(0)
-	console.log('WHAT',activateIdx)
 
 
 	//List of menu item
