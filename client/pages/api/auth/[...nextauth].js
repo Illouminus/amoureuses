@@ -61,7 +61,7 @@ const bcrypt = require("bcrypt")
     },
     theme:  {
     colorScheme: "light",
-}
+}, secret: process.env.SECRET
 }
 
 export default NextAuth(authOptions)
