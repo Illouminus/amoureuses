@@ -37,7 +37,7 @@ const Navbar = ({ styleOther, styleMain}) => {
 								setNavActive(false)
 							}}
 							key={menu.text}>
-							<NavItem active={activateIdx === idx} {...menu} />
+							<NavItem active={activateIdx} {...menu} />
 						</div>
 					})
 					}
