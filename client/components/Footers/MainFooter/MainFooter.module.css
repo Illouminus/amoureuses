@@ -1,0 +1,31 @@
+.footer{
+  height: 30px;
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  background: rgba(1, 0, 0, 0.67);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.description h2{
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: 700;
+  padding-top: 10px;
+}
+
+.social {
+  display: flex;
+  justify-content: space-around;
+  width: 200px;
+}
+
+.filterColorIcon{
+  filter: invert(72%) sepia(10%) saturate(338%) hue-rotate(184deg) brightness(91%) contrast(96%);
+  top: 0;
+  width: 35px;
+  height: 35px;
+}
+

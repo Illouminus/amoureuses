@@ -1,0 +1,52 @@
+.nav {
+  background: #010000;
+  height: 20px;
+  position: fixed;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.nav ul li {
+  margin: 0 10px;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: #8F817C;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.nav ul li a:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+.divLeaf {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  right: 0;
+  top: 90px;
+}
+
+.leaf{
+  position: absolute;
+  top: 0;
+}

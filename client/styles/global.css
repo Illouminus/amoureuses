@@ -5,7 +5,7 @@
 @font-face {
 	font-family: 'verona_serial-regular';
 	src: url('../public/fonts/verona_serial-regular-webfont.woff2') format('woff2'),
-		  url('../public//fonts//verona_serial-regular-webfont.woff') format('woff');
+		  url('../public/fonts/verona_serial-regular-webfont.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -16,8 +16,8 @@
 	box-sizing: border-box;
 	font-family: 'verona_serial-regular';
 	font-weight: 400;
-
 }
+
 html{
 	background-color: rgb(54,5,26);
 }
@@ -25,6 +25,7 @@ html{
 .button__menu{
 	background-color:rgb(54,5,26) ;
 }
+
 .reporty__logo-size{
 	height: 90px;
 	width: 90px;
@@ -36,13 +37,11 @@ html{
 }
 
 header {
-	position: sticky;
+	position: fixed;
 	top: 0;
 	z-index: 10;
-	margin-bottom: 10px;
 	overflow: hidden;
 	height: 15vh;
-
 }
 
 .active_header{
@@ -58,6 +57,7 @@ header {
 	justify-content: space-between;
 	align-items: center;
 	background-color: rgba(95, 96, 97, 0.384);
+	width: 100vw;
 }
 
 .nav__menu-bar{
@@ -132,15 +132,24 @@ header {
 	font-size: 18px;
 	position: relative;
 	transition: all 0.2s;
+	color: #ffffff;
+	opacity: 0.8;
 }
 
+.nav__link:hover {
+
+}
 .nav__link.active{
 	font-weight: bold;
 }
 .nav__link:hover{
 	font-weight: bold;
+	border-bottom: 2px solid #ffffff;
 }
-
+.nav__link:active{
+	font-weight: bold;
+	border-bottom: 2px solid #ffffff;
+}
 @media screen and (max-width: 768px) {
 	.nav__logo-middle{
 		display: none;

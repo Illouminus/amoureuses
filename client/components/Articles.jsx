@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
 import classnames from 'classnames';
-import Link from 'next/link'
 import styles from '../styles/carte.module.css'
-import { useSelector, useDispatch } from 'react-redux';
-import { deleteValue } from '../store/carte/actions'
 import {useSession} from "next-auth/react";
 
 
