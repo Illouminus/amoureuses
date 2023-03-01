@@ -1,6 +1,8 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import {useSession} from "next-auth/react";
+import {MainNavbar} from "../components/Navbars/MainNavbar/MainNavbar";
+import {MainPage} from "../components/MainPage/MainPage";
 
 const lk = () => {
 	const {status, data} = useSession()
@@ -16,10 +18,11 @@ const lk = () => {
 		)
 	} else {
 		return (
-			<div>
-				<Navbar styleOther={styleCard} />
-				 <div>Не для тебя розочка растилась</div>
-			</div>
+				<>
+					 <MainNavbar />
+						<MainPage />
+				</>
+
 		)
 	}
 

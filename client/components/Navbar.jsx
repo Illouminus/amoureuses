@@ -6,7 +6,6 @@ import Logo from './Logo'
 import NavItem from './NavItem'
 import {useSession} from "next-auth/react";
 
-
 const Navbar = ({ styleOther, styleMain}) => {
 	const [styleIn, setStyleIn] = useState(styleMain)
 	const {status, data} = useSession()
@@ -20,7 +19,7 @@ const Navbar = ({ styleOther, styleMain}) => {
 		[{ text: "Carte", href: '/carte' }, { text: "Contact", href: '/contact' }, { text: "Login", href: '/login' },]
 
 	return (
-		<header className={`${styleIn ? 'active_header' : "active_not_header"}`} >
+		<header className={`${styleIn ? 'active_header' : "active_not_header"} header`} >
 			<nav className='nav' style={styleOther}>
 				<Link href={'/'} style={{ textDecoration: 'none' }} onClick={() => setActivateIdx(0)}><Logo /></Link>
 				<div onClick={() => setNavActive(!navActive)}  className={`${navActive ? 'active_burger' : ""} nav__menu-bar`}>

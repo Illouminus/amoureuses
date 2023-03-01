@@ -3,18 +3,16 @@ import { SessionProvider } from "next-auth/react"
 import Router from "next/router"
 import {useEffect, useState} from "react";
 import {Loader} from "../components/Loader";
-
+import Layout from "../components/Layout";
 
 
 export default function MyApp({ Component, pageProps }) {
 	const [loading, setLoading] = useState(false)
 	useEffect(() => {
 		const start = () => {
-			console.log("start")
 			setLoading(true)
 		}
 		const end = () => {
-			console.log("findished");
 			setLoading(false);
 		};
 		Router.events.on("routeChangeStart", start);

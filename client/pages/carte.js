@@ -103,8 +103,8 @@ const carte = ({initialProps}) => {
 							src={buttelOfVine}
 							alt="Take a vin"
 							width="100vw"
-							height="100vh"
-							priority="low"
+							height="85vh"
+							priority="height"
 						/>
 					</div>
 					<div>

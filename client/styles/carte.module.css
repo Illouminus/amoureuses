@@ -2,11 +2,10 @@
 	color: rgb(68, 4, 31);
 }
 
-
-
 .container{
 	display: flex;
-	height: 100%;
+	height: 85vh;
+	align-items: center;
 }
 
 .spanGroup{

@@ -12,7 +12,6 @@ const FullLogo = () => {
 				priority="high"
 			/>
 		</div>
-
 	)
 }
 

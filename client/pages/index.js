@@ -1,12 +1,8 @@
-
-import styles from '../styles/index.module.css'
-import Navbar from '../components/Navbar'
-import Link from 'next/link'
 import Head from 'next/head'
+import {MainPage} from "../components/MainPage/MainPage";
 
 
 const Index = () => {
-	const styleCard = { backgroundColor: 'inherit' }
 	return (
 		<>
 			<Head>
@@ -15,28 +11,9 @@ const Index = () => {
 				<meta name="description" content="this is a website of the vine bar"/>
 				<meta charSet="utf-8"/>
 			</Head>
-			<div style={{
-				backgroundImage: `url('/img/carousel/03.jpg')`,
-				backgroundSize: 'cover',
-				backgroundPosition: 'center',
-				width: '100vw',
-				height: '100vh',
-			}}>
-				<Navbar styleMain={styleCard}/>
-				<Link href={'/contact'} className={styles.href}>
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-					Contact
-				</Link>
-
-
-			</div>
-
+			<MainPage />
 		</>
 	)
-
 }
 
 export default Index;
