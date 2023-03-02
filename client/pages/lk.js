@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import {useSession} from "next-auth/react";
 import {MainNavbar} from "../components/Navbars/MainNavbar/MainNavbar";
 import {MainPage} from "../components/MainPage/MainPage";
+import {MainCarte} from "../components/Carte/MainCarte";
 
 const lk = () => {
 	const {status, data} = useSession()
@@ -19,8 +20,7 @@ const lk = () => {
 	} else {
 		return (
 				<>
-					 <MainNavbar />
-						<MainPage />
+					''
 				</>
 
 		)
