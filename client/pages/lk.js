@@ -20,8 +20,7 @@ const lk = () => {
 	} else {
 		return (
 				<>
-					 <MainNavbar />
-					<MainCarte />
+					''
 				</>
 
 		)
