@@ -5,13 +5,15 @@ import {useSession} from "next-auth/react";
 import Image from 'next/image'
 import Modal from '../components/Modal'
 import Button from '@mui/material/Button';
-import Articles from '../components/Articles';
+import Articles from '../components/Carte/Articles/Articles';
 import Navbar from '../components/Navbar'
 import dbConnect from "../utils/mangoDB"
 import Category from "../models/Category";
 import Carte from "../models/Carte"
 import axios from "axios";
 import Head from "next/head";
+import {MainCarte} from "../components/Carte/MainCarte";
+import {CarteNavbar} from "../components/Navbars/CarteNavbar/CarteNavbar";
 
 const carte = ({initialProps}) => {
 	// Get initials data, parse and sate states
@@ -26,7 +28,7 @@ const carte = ({initialProps}) => {
 	const [menuItem, setMenuItem] = useState({})
 
 
-	const [isLoading, setIsLoading] = useState(false)
+	// const [isLoading, setIsLoading] = useState(false)
 	const [open, setOpen] = useState(false);
 
 
@@ -82,7 +84,7 @@ const carte = ({initialProps}) => {
 		const obj = { ...findMenuItem[0], category: findCategory[0].name }
 		setMenuItem(obj)
 	}
-	const styleCard = { backgroundColor: '#fff0' }
+
 	return (
 		<div>
 			<Head>
@@ -91,38 +93,33 @@ const carte = ({initialProps}) => {
 				<meta name="description" content="this is a website of the vine bar"/>
 				<meta charSet="utf-8"/>
 			</Head>
-			<Navbar styleOther={styleCard} />
+
+			{/*<Navbar />*/}
+			<CarteNavbar />
 			<Modal open={open} handleClose={() => {
 				setOpen(false)
 				setMenuItem({})
 			}} menuItem={menuItem} setMenuItem={setMenuItem} edditOrAdd={edditOrAdd} />
-			{!isLoading && (
-				<div className={styles.container}>
-					<div className={styles.buttle}>
-						<Image
-							src={buttelOfVine}
-							alt="Take a vin"
-							width="100vw"
-							height="85vh"
-							priority="height"
-						/>
-					</div>
-					<div>
-					</div>
-					<div className={styles.carte}>
-						<h1 >DECOUVREZ NOTRE CARTE</h1>
-						{status === "authenticated" && <Button onClick={() => setOpen(true)} style={{ textDecoration: 'none', color: 'white', opacity: '0.8', border: '1px solid #000', position: 'relative', top: '40px',  background: 'rgb(68, 4, 31)' }}>Add article</Button>}
-						<div className={styles.carteTop} >
-							{category.map((item) =>
-								<div key={unicId()}>
-									<Articles category={item} key={unicId()} findId={findId} setOpen={setOpen} menu={menu} deleteItem={deleteItem}/>
-									{status === "authenticated" && <button onClick={() => deleteCategoryInside(item._id)}>Delete Category</button>}
-								</div>
-							)}
-						</div>
-					</div>
-				</div>
-			)}
+			<MainCarte category={category} key={unicId()} findId={findId} setOpen={setOpen} menu={menu} deleteItem={deleteItem} deleteCategoryInside={deleteCategoryInside}/>
+
+
+				{/*<div className={styles.container}>*/}
+				{/*	<div className={styles.carte}>*/}
+				{/*		<h1 >DECOUVREZ NOTRE CARTE</h1>*/}
+
+						{/*<div className={styles.carteTop} >*/}
+						{/*	{category.map((item) =>*/}
+						{/*		<div key={unicId()}>*/}
+						{/*			<Articles category={item} key={unicId()} findId={findId} setOpen={setOpen} menu={menu} deleteItem={deleteItem}/>*/}
+						{/*			{status === "authenticated" && <button onClick={() => deleteCategoryInside(item._id)}>Delete Category</button>}*/}
+						{/*		</div>*/}
+						{/*	)}*/}
+
+						{/*</div>*/}
+
+				{/*	</div>*/}
+				{/*</div>*/}
+
 		</div>
 	)
 }
