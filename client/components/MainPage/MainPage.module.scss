@@ -2,7 +2,9 @@
   height: 100vh;
 }
 
-.buttonLaCarte{
+.buttonLaCarte,
+.buttonDegustation
+{
   position: absolute;
   top: 70%;
   left: 50%;
@@ -16,6 +18,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.buttonDegustation{
+  top: 75%;
 }
 
 .container_mainContent{

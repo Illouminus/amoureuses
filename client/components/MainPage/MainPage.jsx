@@ -17,6 +17,7 @@ export const MainPage = () => {
                 <div className={cls.description_clock}>
                     <FontAwesomeIcon icon={faClock} className={cls.clockDot}/>
                     <p>Mercredi-Dimanche 18h - 00h</p>
+
                 </div>
                 <div className={cls.description_location}>
                     <FontAwesomeIcon icon={faLocationDot} className={cls.locationDot}/>
@@ -24,6 +25,7 @@ export const MainPage = () => {
                 </div>
             </div>
             <Link href={'/carte'} className={cls.buttonLaCarte}>La carte</Link>
+            <Link href={'/degustations'} className={cls.buttonDegustation}>Dégustation</Link>
         <MainFooter />
         </>
     )
