@@ -100,7 +100,7 @@ const carte = ({initialProps}) => {
 				setOpen(false)
 				setMenuItem({})
 			}} menuItem={menuItem} setMenuItem={setMenuItem} edditOrAdd={edditOrAdd} />
-			<MainCarte category={category} key={unicId()} findId={findId} setOpen={setOpen} menu={menu} deleteItem={deleteItem} deleteCategoryInside={deleteCategoryInside}/>
+			<MainCarte category={category} findId={findId} setOpen={setOpen} menu={menu} deleteItem={deleteItem} deleteCategoryInside={deleteCategoryInside}/>
 
 
 				{/*<div className={styles.container}>*/}

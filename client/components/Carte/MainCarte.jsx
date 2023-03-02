@@ -7,9 +7,12 @@ import Image from "next/image";
 import add from '../../public/img/Add.svg'
 import back from '../../public/img/back.svg'
 import {useRouter} from "next/router";
-export const MainCarte = ({category, menu, deleteItem, setOpen, key, findId, deleteCategoryInside}) => {
+export const MainCarte = ({category, menu, deleteItem, setOpen, findId, deleteCategoryInside}) => {
     const {status, data} = useSession()
     const router = useRouter();
+    function unicId() {
+        return Math.floor(Math.random() * 100000) + 10000;
+    }
     function ReturnButton() {
             router.back();
         }
@@ -48,8 +51,8 @@ export const MainCarte = ({category, menu, deleteItem, setOpen, key, findId, del
                         />}
                         <div className={cls.categoryContainer}>
                             {category.map((item) =>
-                                <div key={key} className={cls.containerDeleteCategory}>
-                                    <Articles category={item} key={key} findId={findId} setOpen={setOpen} menu={menu} deleteItem={deleteItem}/>
+                                <div key={unicId()} className={cls.containerDeleteCategory}>
+                                    <Articles category={item} key={unicId()} findId={findId} setOpen={setOpen} menu={menu} deleteItem={deleteItem}/>
                                     {status === "authenticated" && <button onClick={() => deleteCategoryInside(item._id)} className={cls.deleteCategory}>Delete Category</button>}
                                 </div>
                             )}
