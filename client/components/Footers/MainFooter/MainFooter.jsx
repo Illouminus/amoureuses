@@ -1,8 +1,8 @@
 import cls from './MainFooter.module.css'
 import Image from "next/image";
-import instagram from '../../../public/img/instagram.svg'
-import mail from '../../../public/img/letter.svg'
-import telegram from '../../../public/img/telegram.svg'
+import instagram from '../../../public/img/camera.svg'
+import mail from '../../../public/img/envelope.svg'
+import telegram from '../../../public/img/chat.svg'
 import Link from "next/link";
 
 export const MainFooter = () => {

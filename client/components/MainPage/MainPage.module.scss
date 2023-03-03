@@ -22,6 +22,7 @@
 
 .buttonDegustation{
   top: 75%;
+  margin-top: 20px;
 }
 
 .container_mainContent{
@@ -51,6 +52,7 @@
 .description{
   padding-top: 20px;
   position: absolute;
+  width: 300px;
   top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -60,7 +62,7 @@
 .description_clock{
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .description_clock p{
@@ -83,8 +85,18 @@
   height: 29px;
 }
 
-@media screen and (max-width: 768px) {
+
+@media screen and (max-width: 600px) {
   .container_mainContent h1 {
-    font-size: 23px;
+    font-size: 24px;
+    width: 300px;
+  }
+
+  .container_mainContent h2{
+    display: none;
+  }
+
+  .buttonDegustation{
+
   }
 }
