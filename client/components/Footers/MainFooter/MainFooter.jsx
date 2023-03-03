@@ -15,6 +15,7 @@ export const MainFooter = () => {
                         alt="Icon of email"
                         priority="high"
                         className={cls.filterColorIcon}
+
                     />
                     <Link href={'https://instagram.com/lesamoureuses.bar?igshid=YmMyMTA2M2Y='} target={"_blank"} ><Image
                        src={instagram}
