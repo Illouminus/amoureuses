@@ -1,4 +1,3 @@
-
 import cls from './CarteNavbar.module.scss'
 import {useSession} from "next-auth/react";
 import NavItem from "../../NavItem";
@@ -17,13 +16,8 @@ export const CarteNavbar = () => {
     return (
         <nav className={cls.nav}>
             <ul>
+                <li><Link href={'/'}> <Image src={logo} alt={'logotip'}  className={cls.navLogo}/></Link></li>
                 {login && <li><NavItem text={"Logout"} href={'/'} /></li>}
-               <li><Link href={'/'}> <Image src={logo} alt={'logotip'}  className={cls.navLogo}/></Link></li>
-                {/*<li><a href="#">Home</a></li>*/}
-                {/*<li><a href="#">About</a></li>*/}
-                {/*<li><a href="#">Services</a></li>*/}
-                {/*<NavbarLeaf />*/}
-                {/*<li><a href="#">Contact</a></li>*/}
             </ul>
         </nav>
 

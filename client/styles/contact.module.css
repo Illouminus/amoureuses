@@ -7,9 +7,8 @@
 
 .container_map{
 	align-items: flex-end;
-	height: 35vh;
+	height: 50vh;
 	width: 76vw;
-
 }
 
 
@@ -17,8 +16,9 @@
 /******* Contact FORM ****/
 
 .container_contact_form{
-	width: 80%;
+	width: 80vw;
 	padding: 20px;
+
 }
 
 .container_status{

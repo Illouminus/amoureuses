@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Map from '../components/Map'
-import ContactForm from '../components/ContactForm'
+import {ContactForm} from '../components/ContactForm'
 import styles from '../styles/contact.module.css'
 import Head from "next/head";
 const contact = () => {
