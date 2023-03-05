@@ -4,7 +4,7 @@ import styles from '../styles/contact.module.css'
 import Status from './Status';
 
 
-const ContactForm = () => {
+export const ContactForm = () => {
 	const [sendEmail, setSendEmail] = useState(false)
 	const [statusEmail, setstatusEmail] = useState()
 	const [formData, setFormData] = useState({
@@ -127,4 +127,4 @@ const ContactForm = () => {
 
 };
 
-export default ContactForm;
+

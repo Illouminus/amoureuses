@@ -7,12 +7,10 @@ import Image from "next/image";
 import add from '../../public/img/Add.svg'
 import back from '../../public/img/back.svg'
 import {useRouter} from "next/router";
+import {unicId} from '../../utils/generateID'
 export const MainCarte = ({category, menu, deleteItem, setOpen, findId, deleteCategoryInside}) => {
     const {status, data} = useSession()
     const router = useRouter();
-    function unicId() {
-        return Math.floor(Math.random() * 100000) + 10000;
-    }
     function ReturnButton() {
             router.back();
         }
