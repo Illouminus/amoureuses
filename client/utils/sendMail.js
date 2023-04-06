@@ -13,7 +13,7 @@ export async function main(firstName, lastName, email, telephone, message) {
 
     const info = await transporter.sendMail({
         from: { email }, // sender address
-        to: 'lesamoureuses2023@gmail.com', // list of receivers
+        to: 'pariswinesociety@gmail.com', // list of receivers
         subject: 'Contact from site lesamoureuses.paris', // Subject line
         text: '', // plain text body
         html: `
@@ -26,7 +26,7 @@ export async function main(firstName, lastName, email, telephone, message) {
                     <h3>Message:</h3>
                     <p>${message}</p>
                 </div>
-              </div>\t
+              </div>
         
         `
     })
