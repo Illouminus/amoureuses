@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import {useSession} from "next-auth/react";
 import {MainNavbar} from "../components/Navbars/MainNavbar/MainNavbar";
 import {MainFooter} from "../components/Footers/MainFooter/MainFooter";
-import {Carte} from "../components/CartePDF/Carte";
+
 
 
 const lk = () => {
@@ -21,9 +21,7 @@ const lk = () => {
 	} else {
 		return (
 				<>
-					<MainNavbar active={active} setActive={setActive}/>
-					<Carte />
-					<MainFooter />
+					''
 				</>
 
 		)

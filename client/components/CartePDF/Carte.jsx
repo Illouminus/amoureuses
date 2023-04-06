@@ -5,7 +5,7 @@ import {MainNavbar} from "../Navbars/MainNavbar/MainNavbar";
 import { Document, Page, pdfjs } from "react-pdf";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 import cls from './Carte.module.scss'
-export const Carte = () => {
+export const CarteComponent = () => {
 
     const {status, data} = useSession()
     const [numPages, setNumPages] = useState(null);
@@ -21,10 +21,11 @@ export const Carte = () => {
 
     //<embed src="/carte/Carte.pdf" width="100%" height="1200px" type="application/pdf" />
     return (
-        <div className={cls.container}>
+        <div className={cls.container} >
             <Document
                 file={path}
                 onLoadSuccess={onDocumentLoadSuccess}
+
             >
             {Array.from(
                 new Array(numPages),
@@ -36,6 +37,7 @@ export const Carte = () => {
                         renderAnnotationLayer={false}
                         customTextRenderer={false}
                         className={cls.page}
+
                     />
                 ),
             )}
