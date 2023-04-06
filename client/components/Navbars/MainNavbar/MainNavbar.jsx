@@ -2,6 +2,7 @@ import cls from './MainNavbar.module.scss'
 import {useSession} from "next-auth/react";
 import Image from "next/image";
 import smallLogo from '../../../public/img/logo.png'
+import Link from "next/link";
 const classNames = require('classnames');
 export const MainNavbar = ({active, setActive}) => {
     const {status, data} = useSession()
@@ -23,10 +24,9 @@ export const MainNavbar = ({active, setActive}) => {
             <div className={classNames(cls.toggle, {[cls.active]: active})} onClick={activeHedlear}/>
             <div className={classNames(cls.navbar, {[cls.active]: active})} >
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Contact</a></li>
+                    {MENU_LIST.map((item) => (
+                        <li key={item.text}><Link href={item.href}>{item.text}</Link></li>
+                    ))}
                 </ul>
             </div>
 
