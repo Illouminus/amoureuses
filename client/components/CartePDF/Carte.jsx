@@ -1,48 +1,45 @@
-import React, {Suspense, useState} from "react";
-import {useSession} from "next-auth/react";
+import React, { useState } from "react";
+import { useSession } from "next-auth/react";
 import { Document, Page, pdfjs } from "react-pdf";
+import cls from "./Carte.module.scss";
+
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-import cls from './Carte.module.scss'
 
-const path = '/carte/Carte.pdf'
 export const CarteComponent = () => {
-
-    const {status, data} = useSession()
+    const { data } = useSession();
     const [numPages, setNumPages] = useState(null);
-    const [pageNumber, setPageNumber] = useState(1)
-    function onDocumentLoadSuccess({ numPages }) {
+    const [pageNumber, setPageNumber] = useState(1);
+    const path = "/carte/Carte.pdf";
+
+    const onDocumentLoadSuccess = ({ numPages }) => {
         setNumPages(numPages);
         setPageNumber(1);
-    }
+    };
 
+    const renderPages = () => {
+        const pages = [];
+        for (let i = 1; i <= numPages; i++) {
+            pages.push(
+                <Page
+                    key={`page_${i}`}
+                    pageNumber={i}
+                    renderTextLayer={false}
+                    renderAnnotationLayer={false}
+                    customTextRenderer={() => false}
+                    className={cls.page}
+                />
+            );
+        }
+        return pages;
+    };
 
     return (
-        <Suspense >
-        <div className={cls.container} >
-            <Document
-                file={path}
-                onLoadSuccess={onDocumentLoadSuccess}
-
-            >
-
-            {Array.from(
-                new Array(numPages),
-                (el, index) => (
-                    <Page
-                        key={`page_${index + 1}`}
-                        pageNumber={index + 1}
-                        renderTextLayer={false}
-                        renderAnnotationLayer={false}
-                        customTextRenderer={() => false}
-                        className={cls.page}
-
-                    />
-                ),
-            )}
+        <div className={cls.container}>
+            <Document file={path} onLoadSuccess={onDocumentLoadSuccess}>
+                {numPages && renderPages()}
             </Document>
         </div>
-        </Suspense>
-    )
-}
+    );
+};
 
 
