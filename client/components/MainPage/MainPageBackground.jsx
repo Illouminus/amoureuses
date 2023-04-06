@@ -3,7 +3,7 @@ export const MainPageBackground = () => {
     return (
         <div className={cls.divBackground}>
         <div style={{
-            backgroundImage: `url('/img/Bar.png')`,
+            backgroundImage: `url('/img/Bar.jpg')`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',

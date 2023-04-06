@@ -1,25 +1,13 @@
 import React, {useEffect, useState} from 'react'
-import styles from '../styles/carte.module.css'
-import buttelOfVine from '../public/img/buttleOfVine.png'
 import {useSession} from "next-auth/react";
-import Image from 'next/image'
-import Modal from '../components/Modal'
-import Button from '@mui/material/Button';
-import Articles from '../components/Carte/Articles/Articles';
-import Navbar from '../components/Navbar'
-import dbConnect from "../utils/mangoDB"
-import Category from "../models/Category";
-import Carte from "../models/Carte"
 import axios from "axios";
 import Head from "next/head";
-import {MainCarte} from "../components/Carte/MainCarte";
-import {CarteNavbar} from "../components/Navbars/CarteNavbar/CarteNavbar";
+import {MainNavbar} from "../components/Navbars/MainNavbar/MainNavbar";
+import {Carte} from "../components/CartePDF/Carte";
+import {MainFooter} from "../components/Footers/MainFooter/MainFooter";
 
-const carte = ({initialProps}) => {
+const carte = () => {
 	// Get initials data, parse and sate states
-	const initial = JSON.parse(initialProps)
-	const [category, setCategory] = useState(initial.findResultCategory)
-	const [menu, setMenu] = useState(initial.findResultCarte)
 
 	// Get login status from next-auth
 	const {status, data} = useSession()
@@ -93,32 +81,9 @@ const carte = ({initialProps}) => {
 				<meta name="description" content="this is a website of the vine bar"/>
 				<meta charSet="utf-8"/>
 			</Head>
-
-			{/*<Navbar />*/}
-			<CarteNavbar />
-			<Modal open={open} handleClose={() => {
-				setOpen(false)
-				setMenuItem({})
-			}} menuItem={menuItem} setMenuItem={setMenuItem} edditOrAdd={edditOrAdd} />
-			<MainCarte category={category} findId={findId} setOpen={setOpen} menu={menu} deleteItem={deleteItem} deleteCategoryInside={deleteCategoryInside}/>
-
-
-				{/*<div className={styles.container}>*/}
-				{/*	<div className={styles.carte}>*/}
-				{/*		<h1 >DECOUVREZ NOTRE CARTE</h1>*/}
-
-						{/*<div className={styles.carteTop} >*/}
-						{/*	{category.map((item) =>*/}
-						{/*		<div key={unicId()}>*/}
-						{/*			<Articles category={item} key={unicId()} findId={findId} setOpen={setOpen} menu={menu} deleteItem={deleteItem}/>*/}
-						{/*			{status === "authenticated" && <button onClick={() => deleteCategoryInside(item._id)}>Delete Category</button>}*/}
-						{/*		</div>*/}
-						{/*	)}*/}
-
-						{/*</div>*/}
-
-				{/*	</div>*/}
-				{/*</div>*/}
+			<MainNavbar />
+			<Carte />
+			<MainFooter />
 
 		</div>
 	)
@@ -126,14 +91,4 @@ const carte = ({initialProps}) => {
 
 export default carte
 
-export async function getServerSideProps(context) {
-	await dbConnect();
-	const [findResultCategory, findResultCarte] = await Promise.all([
-		Category.find({}),
-		Carte.find({}),
-	]);
 
-	return {
-		props: { initialProps: JSON.stringify({ findResultCategory, findResultCarte }) },
-	};
-}

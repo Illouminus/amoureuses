@@ -2,7 +2,7 @@ import '../styles/global.css'
 import { SessionProvider } from "next-auth/react"
 import Router from "next/router"
 import {useEffect, useState} from "react";
-import {Loader} from "../components/Loader";
+import {Loader} from "../components/Loader/Loader";
 import Layout from "../components/Layout";
 
 

@@ -37,15 +37,12 @@
 		"next": "^13.0.6",
 		"next-auth": "^4.19.2",
 		"nodemailer": "^6.9.1",
+		"pdfjs-dist": "^3.5.141",
 		"react": "^18.2.0",
-		"react-animated-css": "^1.2.1",
 		"react-dom": "^18.2.0",
-		"react-redux": "^8.0.5",
-		"react-responsive-carousel": "^3.2.23",
+		"react-pdf": "^6.2.2",
 		"react-use": "^17.4.0",
-		"redux-persist": "^6.0.0",
-		"styled-components": "^5.3.6",
-		"winston": "^3.8.2"
+		"styled-components": "^5.3.6"
 	},
 	"devDependencies": {
 		"autoprefixer": "^10.4.13",

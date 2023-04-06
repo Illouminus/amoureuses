@@ -1,52 +1,136 @@
 .nav {
-  background: #010000;
-  height: 20px;
   position: fixed;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
   top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1;
-}
-
-.nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  right: 0;
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  background: rgba(1, 0, 0, 0.67);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05 );
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.logo {
+  height: 60px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  height: 100%;
+  padding-left: 20px;
 }
 
-.nav ul li {
-  margin: 0 10px;
+.logoImage {
+  width: 40px;
+  height: 60px;
 }
 
-.nav ul li a {
-  text-decoration: none;
-  color: #8F817C;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.nav ul li a:hover {
-  background-color: #fff;
-  color: #333;
-}
-
-.divLeaf {
-  position: relative;
-  width: 260px;
-  height: 260px;
-  right: 0;
-  top: 90px;
-}
-
-.leaf{
+.toggle {
   position: absolute;
   top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggle::before{
+  content: '';
+  position: absolute;
+  width: 28px;
+  height: 2px;
+  background: #f2f2f2;
+  transform: translateY(-5px);
+  transition: 0.2s;
+}
+.toggle::after{
+  content: '';
+  position: absolute;
+  width: 28px;
+  height: 2px;
+  background: #f2f2f2;
+  transform: translateY(5px);
+  transition: 0.2s;
+}
+.toggle.active{
+  background: #a13333;
+  border-radius: 5px;
+}
+.toggle.active::before{
+  transform: translateY(0px) rotate(45deg);
+}
+.toggle.active::after{
+  transform: translateY(0px) rotate(-45deg);
+}
+
+.navbar{
+  position: relative;
+  height: 60px;
+  right: 60px;
+  color: #f2f2f2;
+  transition: 0.5s;
+  width: 0px;
+  overflow: hidden;
+}
+
+.navbar.active{
+ width: 600px;
+}
+
+.navbar ul{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar ul li{
+  height: 60px;
+  line-height: 60px;
+  display: inline-block;font-size: 1.2em;
+  padding: 0 15px;
+  letter-spacing: 2px;
+  white-space: normal;
+}
+.navbar ul li:hover{
+  color: #f2f2f2;
+  border-radius: 2px;
+  border-bottom: 2px solid rgba(240, 230, 180, 0.53);
+}
+
+
+@media (max-width: 991px) {
+
+  .navbar{
+    position: fixed;
+    bottom: -100%;
+    right: 0;
+    width: 100%;
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px);
+    background: rgba(1, 0, 0, 0.67);
+  }
+  .navbar.active{
+    height: calc(100vh - 60px);
+    bottom: 0;
+    width: 100%;
+  }
+
+  .navbar.active{
+    height: calc(100vh - 60px);
+    bottom: 0;
+    width: 100%;
+  }
+
+  .navbar ul{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
