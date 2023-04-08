@@ -3,7 +3,7 @@ import {useSession} from "next-auth/react";
 import axios from "axios";
 import Head from "next/head";
 import {MainNavbar} from "../components/Navbars/MainNavbar/MainNavbar";
-import {CarteComponent} from "../components/CartePDF/Carte";
+import {Carte} from "../components/CartePDF/Carte";
 import {MainFooter} from "../components/Footers/MainFooter/MainFooter";
 
 const carte = () => {
@@ -21,7 +21,7 @@ const carte = () => {
 				<meta charSet="utf-8"/>
 			</Head>
 			<MainNavbar  active={active} setActive={setActive}/>
-			<CarteComponent  />
+			<Carte  />
 			<MainFooter />
 
 		</div>

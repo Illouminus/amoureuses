@@ -1,4 +1,5 @@
 import cls from './MainPage.module.scss'
+import { isMobile } from "react-device-detect";
 import {MainPageBackground} from "./MainPageBackground";
 import {MainFooter} from "../Footers/MainFooter/MainFooter";
 import Link from "next/link";
@@ -8,9 +9,20 @@ import map from '../../public/img/map-pin.svg'
 import logo from '../../public/img/FullLogo.png'
 import {MainNavbar} from "../Navbars/MainNavbar/MainNavbar";
 import {useState} from "react";
+import { useRouter } from 'next/navigation';
 const classNames = require('classnames');
 export const MainPage = () => {
     const [active, setActive] = useState(false)
+    const [downloadLink, setDownloadLink] = useState("");
+    const { push } = useRouter();
+    const handleButtonClick = () => {
+        if (isMobile) {
+            setDownloadLink('/carte/Carte.pdf');
+            window.open('/carte/Carte.pdf', "_blank");
+        } else {
+            push('/carte')
+        }
+    };
     return (
         <>
         <MainNavbar active={active} setActive={setActive}/>
@@ -32,10 +44,8 @@ export const MainPage = () => {
                         <Link href={"https://goo.gl/maps/nkrz51aR41jbDTwu6"} target={"_blank"}><p>3 rue des Tournelles, 75004 Paris</p></Link>
                     </div>
                 </div>
-                <Link href={'/carte'} className={`${cls.buttonLaCarte}`}>La carte</Link>
+                <button className={`${cls.buttonLaCarte}`} onClick={handleButtonClick}>La carte</button>
             </div>
-
-
 
         <MainFooter />
         </>
