@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
-import Navbar from '../components/Navbar'
 import {useSession} from "next-auth/react";
 import {MainNavbar} from "../components/Navbars/MainNavbar/MainNavbar";
 import {MainFooter} from "../components/Footers/MainFooter/MainFooter";
+
 
 
 
@@ -21,12 +21,17 @@ const lk = () => {
 	} else {
 		return (
 				<>
-					''
+					<div>
+
+							<title>PDF Viewer</title>
+							<div>PAPAP</div>
+						<embed src="/carte/Carte.pdf" width="100%" height="800px" type="application/pdf" />
+					</div>
+
 				</>
 
 		)
 	}
-
 
 }
 

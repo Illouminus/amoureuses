@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSession } from "next-auth/react";
 import { Document, Page, pdfjs } from "react-pdf";
 import cls from "./Carte.module.scss";
-
+import {Loader} from "../Loader/Loader";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 export const CarteComponent = () => {
@@ -10,6 +10,7 @@ export const CarteComponent = () => {
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
     const path = "/carte/Carte.pdf";
+
 
     const onDocumentLoadSuccess = ({ numPages }) => {
         setNumPages(numPages);
@@ -27,6 +28,7 @@ export const CarteComponent = () => {
                     renderAnnotationLayer={false}
                     customTextRenderer={() => false}
                     className={cls.page}
+                    loading={<Loader />}
                 />
             );
         }
@@ -35,8 +37,13 @@ export const CarteComponent = () => {
 
     return (
         <div className={cls.container}>
-            <Document file={path} onLoadSuccess={onDocumentLoadSuccess}>
-                {numPages && renderPages()}
+            <Document
+                file={path}
+                renderMode="svg"
+                loading={<Loader />}
+                onLoadSuccess={onDocumentLoadSuccess}
+            >
+            {numPages && renderPages()}
             </Document>
         </div>
     );
