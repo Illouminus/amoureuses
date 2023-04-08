@@ -39,9 +39,10 @@ export const CarteComponent = () => {
         <div className={cls.container}>
             <Document
                 file={path}
-                renderMode="svg"
+                renderMode="canvas"
                 loading={<Loader />}
                 onLoadSuccess={onDocumentLoadSuccess}
+                error={"Failed to load PDF file."}
             >
             {numPages && renderPages()}
             </Document>
