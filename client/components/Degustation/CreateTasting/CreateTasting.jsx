@@ -4,6 +4,7 @@ import cls from './CreateTasting.module.scss'
 import {ButtonProfile} from "../../ButtonProfile/ButtonProfile";
 
 export const CreateTasting = ({handleTasting}) => {
+    const BUCKET_URL= "https://les-amoureuses.s3.eu-west-3.amazonaws.com/"
     const [formData, setFormData] = useState({
         date: '',
         title: '',
@@ -24,19 +25,27 @@ export const CreateTasting = ({handleTasting}) => {
         e.preventDefault();
         try {
             let photoUrl = '';
+            let dataForm = { ...formData }
             if (file) {
-                const photoData = new FormData();
-                photoData.append('photo', file);
-                const photoResponse = await axios.post('/api/tasting/upload-photo', photoData, {
+                console.log(file)
+                let { data } = await axios.post("/api/tasting/upload-photo", {
+                    name: file.name,
+                    type: file.type,
+                });
+                console.log('dataIn', data)
+                let url = data.url;
+                let photoUrl = BUCKET_URL + file.name;
+                dataForm = { ...formData, photo: photoUrl };
+                let { data: newData } = await axios.put(url, file, {
                     headers: {
-                        'Content-Type': 'multipart/form-data',
+                        "Content-type": file.type,
+                        "Access-Control-Allow-Origin": "*",
                     },
                 });
-                photoUrl = photoResponse.data.photoUrl;
             }
-            const data = { ...formData, photo: photoUrl };
 
-            const response = await axios.post('/api/tasting/add', data);
+
+            const response = await axios.post('/api/tasting/add', dataForm);
             console.log(response.data);
             if (response.status === 200) {
                 alert('Tasting created successfully');

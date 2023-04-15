@@ -18,7 +18,7 @@ export const MainPage = () => {
     const handleButtonClick = () => {
         if (isMobile) {
             setDownloadLink('/carte/Carte.pdf');
-            window.open('/carte/Carte.pdf', "_blank");
+            window.open('https://les-amoureuses.s3.eu-west-3.amazonaws.com/menu.pdf', "_blank");
         } else {
             push('/carte')
         }

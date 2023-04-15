@@ -4,7 +4,7 @@ import cls from "./Carte.module.scss";
 import {Loader} from "../Loader/Loader";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-const path = "/carte/Carte.pdf";
+const path = "https://les-amoureuses.s3.eu-west-3.amazonaws.com/menu.pdf";
 
 export const DesktopCarte = () => {
     const [numPages, setNumPages] = React.useState(null);

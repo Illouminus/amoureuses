@@ -15,15 +15,14 @@ export default async (req, res) => {
     }
     try {
         let { name, type } = req.body;
-        console.log(name, type)
+
         const fileParams = {
             Bucket: process.env.BUCKET_NAME,
-            Key: name,
+            Key: "menu.pdf",
             Expires: 600,
             ContentType: type,
         };
         const url = await s3.getSignedUrlPromise("putObject", fileParams);
-        console.log(url)
         res.status(200).json({ url });
     } catch (err) {
         console.log(err);
