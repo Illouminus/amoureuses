@@ -3,23 +3,27 @@ import axios from "axios";
 import { useDropzone } from "react-dropzone";
 import cls from './UploadPDF.module.scss'
 const UploadPDF = () => {
+    const BUCKET_URL= "https://les-amoureuses.s3.eu-west-3.amazonaws.com/"
     const [uploadStatus, setUploadStatus] = useState("");
-
+    const [uploadedFile, setUploadedFile] = useState();
+    console.log('uploadedFile', uploadedFile)
     const onDrop = useCallback(async (acceptedFiles) => {
-        try {
-            const formData = new FormData();
+        let { data } = await axios.post("/api/carte/uploadAws", {
+            name: acceptedFiles[0].name,
+            type: acceptedFiles[0].type,
+        });
+        console.log('FROM AWS???', data);
+        const url = data.url;
 
-            formData.append("file", acceptedFiles[0]);
-            console.log(formData)
-            const response = await axios.post("/api/carte/upload", formData, {
-                headers: { "Content-Type": "multipart/form-data" },
-            });
+        let { data: newData } = await axios.put(url, acceptedFiles[0], {
+            headers: {
+                "Content-type": acceptedFiles[0].type,
+                "Access-Control-Allow-Origin": "*",
+            },
+        });
 
-            setUploadStatus("File uploaded successfully");
-        } catch (error) {
-            console.error("Error uploading file:", error);
-            setUploadStatus("Error uploading file");
-        }
+        setUploadedFile(BUCKET_URL + acceptedFiles[0].name);
+
     }, []);
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
@@ -38,8 +42,8 @@ const UploadPDF = () => {
                     )}
                 </div>
             </div>
-
             {uploadStatus && <p>{uploadStatus}</p>}
+
         </div>
     );
 };

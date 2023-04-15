@@ -15,7 +15,7 @@ const NavItem = ({ href, text }) => {
 
 	const handleCarteClick = async () => {
 		if (isMobile) {
-			window.open("/carte/Carte.pdf", "_blank");
+			window.open("https://les-amoureuses.s3.eu-west-3.amazonaws.com/menu.pdf", "_blank");
 		} else {
 			await router.push("/carte");
 		}
