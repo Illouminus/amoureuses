@@ -17,7 +17,7 @@ export default async (req, res) => {
         let { name, type } = req.body;
         console.log(name, type)
         const fileParams = {
-            Bucket: process.env.BUCKET_NAME,
+            Bucket: "les-amoureuses",
             Key: name,
             Expires: 600,
             ContentType: type,
