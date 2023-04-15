@@ -32,16 +32,16 @@ export default function MyApp({ Component, pageProps }) {
 				</div>
 			): (
 				<SessionProvider session={pageProps.session}>
-					{/*<Component {...pageProps} />*/}
-					<div style={{
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "center",
-						width: "100vw",
-						height: "100vh",
-					}}>
-						Site en cours de maintenance
-					</div>
+					<Component {...pageProps} />
+					{/*<div style={{*/}
+					{/*	display: "flex",*/}
+					{/*	alignItems: "center",*/}
+					{/*	justifyContent: "center",*/}
+					{/*	width: "100vw",*/}
+					{/*	height: "100vh",*/}
+					{/*}}>*/}
+					{/*	Site en cours de maintenance*/}
+					{/*</div>*/}
 
 				</SessionProvider>
 			)}
