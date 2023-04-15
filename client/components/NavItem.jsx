@@ -13,7 +13,7 @@ const NavItem = ({ href, text }) => {
 			onClick={() => {
 				setActive(true)
 				console.log(text)
-				text === 'Logout' && exitHandler()
+				text === 'Déconnexion' && exitHandler()
 			}}>{text}</Link>
 	)
 }

@@ -3,20 +3,11 @@ import EmailProvider from "next-auth/providers/email";
 import CredentialsProvider from "next-auth/providers/credentials";
 import dbConnect from "../../../utils/mangoDB";
 import User from "../../../models/User"
-const bcrypt = require("bcrypt")
+import bcrypt from 'bcrypt'
+import jwt from "jsonwebtoken";
 
- const authOptions = {
+const authOptions = {
     providers: [
-        // EmailProvider({
-        //     server: process.env.EMAIL_SERVER,
-        //     from: process.env.EMAIL_FROM,
-        //     sendVerificationRequest({
-        //         identifier: email,
-        //         url,
-        //         provider: {server, from}
-        //     }) {
-        //     },
-        // }),
         CredentialsProvider({
             name: "Credentials",
             type: 'credentials',
@@ -25,43 +16,56 @@ const bcrypt = require("bcrypt")
                 try {
                     const response = await dbConnect()
                     if (response) {
-                        const {login, password} = credentials;
+                        const { login, password } = credentials;
                         const identified = await User.findOne({ login });
                         if (identified) {
                             const passCheck = await bcrypt.compare(password, identified.password);
                             if (passCheck) {
-                                return {login: true}
+
+                                return identified
                             } else {
                                 throw new Error('Wrong password')
                             }
-                        } else{
+                        } else {
                             throw new Error('Login not found')
                         }
                     }
-                } catch(error){
+                } catch (error) {
                     console.log(error);
                     throw new Error('Error to login');
                 }
-
-                // if (login !== 'maria' || password !== 'maria' ) {
-                //     throw new Error('invalid login or password')
-                // } else {
-                //     return {login: true}
-                // }
-
             }
         })
     ],
-    // secret: process.env.SECRET,
-     pages: {
+    callbacks: {
+        async jwt({ token, user, trigger, session, }) {
+            if (trigger === 'update' && session) {
+                token._doc.firstName = session.firstName
+                token._doc.lastName = session.lastName
+                token._doc.avatar = session.avatar
+                return { ...token, ...user }
+            }
+
+            return { ...token, ...user }
+        },
+        async session({ session, user, token }) {
+            const extractUserData = (obj) => {
+                const { sub, _doc: { firstName, lastName, login, avatar } } = obj;
+                return { sub, firstName, lastName, login, avatar };
+            }
+            session.user = extractUserData(token);
+
+            return session
+        },
+    },
+    pages: {
         signIn: "/login"
-     },
+    },
+    secret: process.env.SECRET,
     session: {
         jwt: true
     },
-    theme:  {
-    colorScheme: "light",
-}, secret: process.env.SECRET
+
 }
 
 export default NextAuth(authOptions)
