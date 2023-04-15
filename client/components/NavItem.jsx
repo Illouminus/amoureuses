@@ -5,7 +5,7 @@ import { signOut } from "next-auth/react"
 const NavItem = ({ href, text }) => {
 	const [active, setActive] = useState(false)
 	const exitHandler = async () => {
-		const response = await signOut()
+		await signOut({ callbackUrl: '/' });
 	}
 
 	return (
@@ -14,7 +14,9 @@ const NavItem = ({ href, text }) => {
 				setActive(true)
 				console.log(text)
 				text === 'Déconnexion' && exitHandler()
-			}}>{text}</Link>
+			}}>
+			{text}
+		</Link>
 	)
 }
 

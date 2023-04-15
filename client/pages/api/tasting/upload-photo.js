@@ -23,7 +23,6 @@ const uploadMiddleware = (req, res, next) => {
         multer({ storage: upload.storage, fileFilter: upload.fileFilter }).single("photo")(req, res, (err) => {
             if (err) {
                 reject(err);
-                res.status(501).json({ error: "Error uploading file" });
             } else {
                 resolve();
             }
