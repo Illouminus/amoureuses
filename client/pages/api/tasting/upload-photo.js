@@ -1,8 +1,10 @@
 import multer from "multer";
-
+import { tmpdir } from 'os'
 const upload = multer({
     storage: multer.diskStorage({
-        destination: "./public/img/tasting",
+        destination: function (req, file, cb) {
+            cb(null, '/tmp/uploads');
+        },
         filename: (req, file, cb) => {
             cb(null, `${Date.now()}-${file.originalname}`);
         },
