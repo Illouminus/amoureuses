@@ -2,6 +2,7 @@ import Link from 'next/link'
 import React, {useState} from 'react'
 import { signOut } from "next-auth/react"
 import {useRouter} from "next/router";
+import { isMobile } from "react-device-detect";
 
 const NavItem = ({ href, text }) => {
 	const [active, setActive] = useState(false)
@@ -11,13 +12,35 @@ const NavItem = ({ href, text }) => {
 		await router.push('/')
 	}
 
+
+	const handleCarteClick = async () => {
+		if (isMobile) {
+			window.open("/carte/Carte.pdf", "_blank");
+		} else {
+			await router.push("/carte");
+		}
+	};
+
+	const handleNavItemClick = async (e) => {
+		setActive(true);
+		console.log(text);
+		if (text === "Déconnexion") {
+			e.preventDefault()
+			await exitHandler();
+		} else if (text === "Carte") {
+			e.preventDefault()
+			await handleCarteClick();
+		} else {
+			e.preventDefault()
+			await router.push(href);
+		}
+	};
+
 	return (
-		<Link href={href} style={{ textDecoration: 'none',  }} className={`${active ? 'active' : ''} nav__link`}
-			onClick={() => {
-				setActive(true)
-				console.log(text)
-				text === 'Déconnexion' && exitHandler()
-			}}>
+		<Link
+			href={href} style={{ textDecoration: 'none' }}
+			className={`${active ? 'active' : ''} nav__link`}
+			onClick={handleNavItemClick}>
 			{text}
 		</Link>
 	)

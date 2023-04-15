@@ -1,5 +1,6 @@
 import cls from './MainNavbar.module.scss'
 import {useSession} from "next-auth/react";
+import { isMobile } from "react-device-detect";
 import Image from "next/image";
 import smallLogo from '../../../public/img/logo.png'
 import NavItem from "../../NavItem";
@@ -12,6 +13,8 @@ export const MainNavbar = ({active, setActive}) => {
         e.stopPropagation()
         setActive(!active)
     }
+
+
 
     const MENU_LIST = login ? [{ text: "Carte", href: '/carte' }, { text: "Dégustation", href: '/degustations' }, { text: "Déconnexion", href: '/'}, {text: "Admin", href: '/lk'}] :
         [{ text: "Carte", href: '/carte' }, { text: "Dégustation", href: '/degustations' }, { text: "Connexion", href: '/login' }, ]
