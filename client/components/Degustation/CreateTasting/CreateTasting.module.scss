@@ -1,0 +1,38 @@
+.form{
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.22);
+  align-items: center;
+}
+
+.form input {
+  margin: 20px;
+  border: 0.5px solid black;
+}
+
+
+.file {
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute;
+}
+
+.file_input label {
+  display: block;
+  position: relative;
+  width: 150px;
+  height: 30px;
+  border-radius: 25px;
+  background: linear-gradient(40deg, #b2b0b0, #938430);
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  opacity: 0.8;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform .2s ease-out;
+  margin: 10px 0;
+}

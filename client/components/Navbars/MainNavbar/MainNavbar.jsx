@@ -2,7 +2,7 @@ import cls from './MainNavbar.module.scss'
 import {useSession} from "next-auth/react";
 import Image from "next/image";
 import smallLogo from '../../../public/img/logo.png'
-import Link from "next/link";
+import NavItem from "../../NavItem";
 const classNames = require('classnames');
 export const MainNavbar = ({active, setActive}) => {
     const {status, data} = useSession()
@@ -13,8 +13,8 @@ export const MainNavbar = ({active, setActive}) => {
         setActive(!active)
     }
 
-    const MENU_LIST = login ? [{ text: "Carte", href: '/carte' }, { text: "Contact", href: '/contact' }, { text: "Logout", href: '/', }] :
-        [{ text: "Carte", href: '/carte' }, { text: "Contact", href: '/contact' }, { text: "Login", href: '/login' },]
+    const MENU_LIST = login ? [{ text: "Carte", href: '/carte' }, { text: "Dégustation", href: '/degustations' }, { text: "Déconnexion", href: '/'}, {text: "Admin", href: '/lk'}] :
+        [{ text: "Carte", href: '/carte' }, { text: "Dégustation", href: '/degustations' }, { text: "Connexion", href: '/login' }, ]
 
     return (
         <nav className={cls.nav} >
@@ -25,7 +25,7 @@ export const MainNavbar = ({active, setActive}) => {
             <div className={classNames(cls.navbar, {[cls.active]: active})} >
                 <ul>
                     {MENU_LIST.map((item) => (
-                        <li key={item.text}><Link href={item.href}>{item.text}</Link></li>
+                        <li key={item.text}><NavItem href={item.href} text={item.text}/></li>
                     ))}
                 </ul>
             </div>

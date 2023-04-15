@@ -1,6 +1,7 @@
 import React from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import cls from "./Carte.module.scss";
+import {Loader} from "../Loader/Loader";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 const path = "/carte/Carte.pdf";
@@ -31,7 +32,7 @@ export const DesktopCarte = () => {
 
     return (
         <div className={cls.container}>
-            <Document file={path} onLoadSuccess={onDocumentLoadSuccess}>
+            <Document file={path} onLoadSuccess={onDocumentLoadSuccess} loading={<Loader />}>
                 <div className={cls.pages}>{numPages && renderPages(numPages)}</div>
             </Document>
         </div>

@@ -1,38 +1,41 @@
-import React, {useState} from 'react'
-import {useSession} from "next-auth/react";
-import {MainNavbar} from "../components/Navbars/MainNavbar/MainNavbar";
-import {MainFooter} from "../components/Footers/MainFooter/MainFooter";
-
+import React, { useState} from 'react';
+import { useSession } from 'next-auth/react';
+import { MainNavbar } from '../components/Navbars/MainNavbar/MainNavbar';
+import { MainFooter } from '../components/Footers/MainFooter/MainFooter';
+import Account from '../components/Account/Account';
+import {Loader} from "../components/Loader/Loader";
+import cls from '../styles/lk.module.scss'
 
 
 
 const lk = () => {
-	const {status, data} = useSession()
-	const session = useSession()
-	const [active, setActive] = useState(false)
-	const styleCard = { backgroundColor: '#fff0' }
-	if (status === "authenticated") {
-		return (
-			<div>
-				<MainNavbar active={active} setActive={setActive}/>
-				<MainFooter />
-			</div>
-		)
-	} else {
-		return (
-				<>
-					<div>
+	const { data:session, status, update } = useSession();
+	const [active, setActive] = useState(false);
 
-							<title>PDF Viewer</title>
-							<div>PAPAP</div>
-						<embed src="/carte/Carte.pdf" width="100%" height="800px" type="application/pdf" />
-					</div>
-
-				</>
-
-		)
+	const updateSession = async (obj) => {
+		await update(obj)
 	}
 
-}
 
-export default lk
+	if (status === 'loading') {
+		return <Loader />
+	}
+
+	if (status === 'authenticated') {
+
+		return (
+		<div className={cls.containerLk}>
+				<MainNavbar active={active} setActive={setActive} />
+				{session.user && <Account session={session.user} updateSession={updateSession} />}
+				<MainFooter />
+		</div>
+		);
+
+	} else {
+
+		return null
+
+	}
+};
+
+export default lk;
