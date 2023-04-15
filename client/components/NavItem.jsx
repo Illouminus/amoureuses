@@ -1,12 +1,13 @@
 import Link from 'next/link'
 import React, {useState} from 'react'
 import { signOut } from "next-auth/react"
-import {router} from "next/client";
+import {useRouter} from "next/router";
 
 const NavItem = ({ href, text }) => {
 	const [active, setActive] = useState(false)
+	const router = useRouter();
 	const exitHandler = async () => {
-		await signOut({ redirect: false });
+		await signOut({redirect: false});
 		await router.push('/')
 	}
 
