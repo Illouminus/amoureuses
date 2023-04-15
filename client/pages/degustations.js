@@ -36,7 +36,7 @@ export async function getServerSideProps() {
         const tastings = await res.data;
         return {
             props: {
-                tastings,
+                tastings
             },
         };
 }
