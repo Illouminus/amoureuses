@@ -32,12 +32,21 @@ export const degustations = ({tastings}) => {
 
 
 export async function getStaticProps() {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tasting/get-tastings`);
-    const tastings = await res.data;
-    return {
-        props: {
-            tastings,
-        },
-    };
+    try {
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tasting/get-tastings`);
+        const tastings = await res.data;
+        return {
+            props: {
+                tastings,
+            },
+        };
+    } catch (error) {
+        console.error("Error fetching tastings:", error);
+        return {
+            props: {
+                tastings: [], // Fallback value for tastings in case of an error
+            },
+        };
+    }
 }
 export default degustations
