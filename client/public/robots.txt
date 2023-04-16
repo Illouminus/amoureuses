@@ -1,0 +1,9 @@
+User-Agent: *
+Allow: /carte
+Allow: /degustations
+Allow: /
+Disallow: /lk
+Disallow: /login
+
+Sitemap: https://www.lesamoureuses.paris/sitemap.xml
+
