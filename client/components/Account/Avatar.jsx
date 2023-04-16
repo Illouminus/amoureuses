@@ -3,7 +3,7 @@ import { Box, Avatar as MuiAvatar } from "@mui/material";
 import { useDropzone } from "react-dropzone";
 
 const Avatar = (props) => {
-    console.log('COMMING')
+
 
     const {
         src,

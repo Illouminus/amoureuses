@@ -11,13 +11,10 @@ import UploadPDF from "../UploadPDF/UploadPDF";
 import {CreateTasting} from "../Degustation/CreateTasting/CreateTasting";
 
 
-const ButtonsContainer = styled("div")({
-    display: "flex",
-    justifyContent: "space-around",
-    marginTop: "1rem",
-});
 
 const Account = ({ session, updateSession }) => {
+
+    const BUCKET_URL= "https://les-amoureuses.s3.eu-west-3.amazonaws.com/"
 
     // STATE IF THE BUTTON EDIT IS ACTIVE
     const [isEditable, setIsEditable] = useState(false);
@@ -84,16 +81,27 @@ const Account = ({ session, updateSession }) => {
 
     // HANDLER FOR CHANGE USER AVATAR - LOGIC BACKEND
     const handleAvatarChange = async (acceptedFiles) => {
+
+        let url = ''
+        let urlBD = ''
         console.log(acceptedFiles)
         try {
-            const formData = new FormData();
-            formData.append("avatar", acceptedFiles[0]);
-
-            console.log(formData)
-            console.log(session.sub)
-            const response = await axios.post(`/api/users/${session.sub}/avatar`, formData, {
-                headers: { "Content-Type": "multipart/form-data" },
+            let { data } = await axios.post("/api/tasting/upload-photo", {
+                name: acceptedFiles[0].name,
+                type: acceptedFiles[0].type,
             });
+            url = data.url
+            urlBD = BUCKET_URL + acceptedFiles[0].name
+
+            let { data: newData } = await axios.put(url, acceptedFiles[0], {
+                headers: {
+                    "Content-type": acceptedFiles[0].type,
+                    "Access-Control-Allow-Origin": "*",
+                },
+            });
+
+
+            const response = await axios.post(`/api/users/${session.sub}/avatar`, {url: urlBD});
             if (response.status === 200) {
                 console.log(response.data)
                 updateSession({
