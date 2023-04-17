@@ -10,7 +10,6 @@ export const MainPageBackground = () => {
         '/img/carousel/04.jpg',
         '/img/carousel/05.jpg',
         '/img/carousel/06.jpg',
-        '/img/carousel/08.jpg',
         // Add more image paths as needed
     ];
 
