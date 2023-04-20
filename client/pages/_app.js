@@ -27,12 +27,14 @@ export default function MyApp({ Component, pageProps }) {
 	return (
 		<>
 		<Head>
-			<title>Les Amoureuses</title>
+			<title>Les Amoureuses bar à vin Paris</title>
+			<meta name="description" content="le meilleur bar a vin de paris. Les Amoureuses. Bar à vin Les Amoureuses.
+			 Bar à vin Paris. Dégustation de vin à Paris. Passer une soirée en amoureux. Soirée à Paris."/>
 			<link rel="shortcut icon" href="/favicon.png" />
-			<meta name="keywords" content="vin, bar, soiree, drinks, drink, night, vine"/>
+			<meta name="keywords" content="Bar à vin, achat vin, Les Amoureuses,  bar à vin les amoureuses, passer une soirée, degustation de vin, bar à vin Paris, bar Paris, belle soirée, evénement sur paris"/>
 			<meta name="theme-color" content="##5e5b46" />
 			<meta name="google-site-verification" content="lzPGZz3-s1GFv-EX0YmME6vvW0nLamrkyxM07hm_oQo" />
-			<meta name="description" content="le meilleur bar a vin de paris"/>
+
 			<meta charSet="utf-8"/>
 		</Head>
 			{loading ? (
