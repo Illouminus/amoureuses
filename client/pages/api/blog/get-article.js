@@ -7,7 +7,6 @@ async function handler(req, res) {
 
         if (req.method === "GET") {
             const { id } = req.query;
-            console.log('ID ON BACK', id)
             const article = await Article.findById(id);
 
             if (!article) {

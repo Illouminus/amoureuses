@@ -12,9 +12,15 @@
 .containerAdding{
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 30%;
+  position: relative;
 }
+
 
 .containerRender {
   width: 70%;
+  height: 60vh;
+  overflow:scroll;
+  overflow-x:hidden;
 }

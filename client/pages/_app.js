@@ -3,7 +3,7 @@ import { SessionProvider } from "next-auth/react"
 import Router from "next/router"
 import {useEffect, useState} from "react";
 import {Loader} from "../components/Loader/Loader";
-import Layout from "../components/Layout";
+import Head from 'next/head'
 
 
 export default function MyApp({ Component, pageProps }) {
@@ -26,6 +26,15 @@ export default function MyApp({ Component, pageProps }) {
 	}, [])
 	return (
 		<>
+		<Head>
+			<title>Les Amoureuses</title>
+			<link rel="shortcut icon" href="/favicon.png" />
+			<meta name="keywords" content="vin, bar, soiree, drinks, drink, night, vine"/>
+			<meta name="theme-color" content="##5e5b46" />
+			<meta name="google-site-verification" content="lzPGZz3-s1GFv-EX0YmME6vvW0nLamrkyxM07hm_oQo" />
+			<meta name="description" content="le meilleur bar a vin de paris"/>
+			<meta charSet="utf-8"/>
+		</Head>
 			{loading ? (
 				<div className="center_loader">
 					<Loader />
