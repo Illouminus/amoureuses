@@ -1,0 +1,20 @@
+.title{
+  text-align: center;
+  margin-bottom: 20px;
+}
+.container{
+  display: flex;
+  width: 70vw;
+  justify-content: space-between;
+  overflow-y: auto;
+}
+
+.containerAdding{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.containerRender {
+  width: 70%;
+}

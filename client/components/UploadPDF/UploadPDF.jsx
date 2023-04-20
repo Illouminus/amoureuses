@@ -6,7 +6,6 @@ const UploadPDF = () => {
     const BUCKET_URL= "https://les-amoureuses.s3.eu-west-3.amazonaws.com/"
     const [uploadStatus, setUploadStatus] = useState("");
     const [uploadedFile, setUploadedFile] = useState();
-    console.log('uploadedFile', uploadedFile)
     const onDrop = useCallback(async (acceptedFiles) => {
         let { data } = await axios.post("/api/carte/uploadAws", {
             name: acceptedFiles[0].name,

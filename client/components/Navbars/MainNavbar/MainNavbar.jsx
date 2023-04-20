@@ -16,8 +16,19 @@ export const MainNavbar = ({active, setActive}) => {
 
 
 
-    const MENU_LIST = login ? [{ text: "Carte", href: '/carte' }, { text: "Dégustation", href: '/degustations' }, { text: "Déconnexion", href: '/'}, {text: "Admin", href: '/lk'}] :
-        [{ text: "Carte", href: '/carte' }, { text: "Dégustation", href: '/degustations' }, { text: "Connexion", href: '/login' }, ]
+    const MENU_LIST = login ? [
+            { text: "Carte", href: '/carte' },
+            { text: "Dégustation", href: '/degustations' },
+            { text: "Déconnexion", href: '/'},
+            {text: "Admin", href: '/lk'},
+            { text: "Blog", href: '/blog' },
+        ]
+        :
+        [
+            { text: "Carte", href: '/carte' },
+            { text: "Dégustation", href: '/degustations' },
+            { text: "Connexion", href: '/login' },
+            { text: "Blog", href: '/blog' }, ]
 
     return (
         <nav className={cls.nav} >

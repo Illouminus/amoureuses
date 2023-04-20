@@ -9,6 +9,7 @@ import cls from './Account.module.scss'
 import {ButtonProfile} from "../ButtonProfile/ButtonProfile";
 import UploadPDF from "../UploadPDF/UploadPDF";
 import {CreateTasting} from "../Degustation/CreateTasting/CreateTasting";
+import {ArticleForm} from "../Blog/CreateArticle/ArticleFrom";
 
 
 
@@ -22,8 +23,7 @@ const Account = ({ session, updateSession }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isModalAvatarOpen, setIsModalAvatarOpen] = useState(false);
     const [isModalTastingOpen, setIsModalTastingOpen] = useState(false);
-
-    const [isTastingCreate, setIsTastingCreate] = useState(false)
+    const [isModalArticleOpen, setIsModalArticleOpen] = useState(false);
     const [isPasswordChanging, setIsPasswordChanging] = useState(false)
     //STATES CHANGE NAME USER
     const [firstName, setFirstName] = useState(session.firstName);
@@ -148,6 +148,11 @@ const Account = ({ session, updateSession }) => {
                     <ChangePassword handleChangePassword={handleChangePassword} isPasswordChanging={isPasswordChanging}/>
                 </ModalWindow>
             )}
+            { isModalArticleOpen &&(
+                <ModalWindow onClose={() => setIsModalArticleOpen(false)}>
+                    <ArticleForm />
+                </ModalWindow>
+            )}
             { isModalTastingOpen &&(
                 <ModalWindow onClose={() => setIsModalTastingOpen(false)}>
                     <CreateTasting handleTasting={handleTasting} />
@@ -187,6 +192,7 @@ const Account = ({ session, updateSession }) => {
             <div className={cls.containerUtils}>
                 <UploadPDF />
                 <ButtonProfile onClick={() => setIsModalTastingOpen(true)} text={"Ajoutez une dégustation"} width={'300px'}/>
+                <ButtonProfile onClick={() => setIsModalArticleOpen(true)} text={"Ajoutez un article"} width={'300px'}/>
                 {
                     isEditable &&
                     <>
