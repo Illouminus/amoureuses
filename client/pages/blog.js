@@ -4,6 +4,7 @@ import { MainNavbar } from "../components/Navbars/MainNavbar/MainNavbar";
 import { MainFooter } from "../components/Footers/MainFooter/MainFooter";
 import {ArticleCard} from "../components/Blog/ArticleCard/ArticleCard";
 import cls from "../styles/blog.module.scss";
+import Head from "next/head";
 
 const Blog = ({ blogs }) => {
     const [articles, setArticles] = useState(blogs);
@@ -24,6 +25,12 @@ const Blog = ({ blogs }) => {
 
     return (
         <>
+            <Head>
+                <title>Blog</title>
+                <meta name="description" content="Le blog. Notre selection des articles. Articles sur le vin."/>
+                <meta name="keywords" content="Articles vins, articles sur le bar, ensegnement vin"/>
+                <meta charSet="utf-8"/>
+            </Head>
             <MainNavbar active={active} setActive={setActive} />
             <h1 className={cls.title}>Le blog</h1>
             <div className={cls.container}>

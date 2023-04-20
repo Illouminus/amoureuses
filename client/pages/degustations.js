@@ -4,6 +4,7 @@ import {MainNavbar} from "../components/Navbars/MainNavbar/MainNavbar";
 import {WineTastingList} from "../components/Degustation/WineTastingList/WineTastingList";
 import {MainFooter} from "../components/Footers/MainFooter/MainFooter";
 import axios from "axios";
+import Head from "next/head";
 
 export const degustations = ({tastings}) => {
     const {status, data} = useSession()
@@ -21,6 +22,12 @@ export const degustations = ({tastings}) => {
     } else {
         return (
             <>
+                <Head>
+                    <title>Degustations</title>
+                    <meta name="description" content="La liste des degustations à venir"/>
+                    <meta name="keywords" content="Degustations, tasting, vins, Faire une degustation"/>
+                    <meta charSet="utf-8"/>
+                </Head>
                 <MainNavbar  active={active} setActive={setActive} />
                 <WineTastingList tastings={tastings}/>
                 <MainFooter />

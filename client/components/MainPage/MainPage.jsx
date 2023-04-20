@@ -28,10 +28,9 @@ export const MainPage = () => {
         <MainNavbar active={active} setActive={setActive}/>
         <MainPageBackground />
             <div className={classNames(cls.container, {[cls.active]: active})}>
+                <h1 style={{opacity: "0"}}> Les Amoureuses bar à vin Paris</h1>
                 <div className={cls.container_mainContent}>
-                    <h1>
                         <Image src={logo} alt={'logo'} />
-                    </h1>
                 </div>
                 <div className={cls.description}>
                     <div className={cls.description_clock}>
