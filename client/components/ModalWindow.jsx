@@ -21,6 +21,7 @@ const ModalContent = styled("div")({
     maxWidth: "80%",
     maxHeight: "80%",
     overflowY: "auto",
+
 });
 
 const ModalWindow = ({ children, onClose }) => {

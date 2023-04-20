@@ -1,5 +1,6 @@
 import React, { useState} from "react";
 import AccountInfo from "./AccountInfo";
+import { isMobile } from "react-device-detect";
 import Avatar from "./Avatar";
 import ChangePassword from "./ChangePassword";
 import { styled } from "@mui/system";
@@ -192,7 +193,7 @@ const Account = ({ session, updateSession }) => {
             <div className={cls.containerUtils}>
                 <UploadPDF />
                 <ButtonProfile onClick={() => setIsModalTastingOpen(true)} text={"Ajoutez une dégustation"} width={'300px'}/>
-                <ButtonProfile onClick={() => setIsModalArticleOpen(true)} text={"Ajoutez un article"} width={'300px'}/>
+                {!isMobile && <ButtonProfile onClick={() => setIsModalArticleOpen(true)} text={"Ajoutez un article"} width={'300px'}/>}
                 {
                     isEditable &&
                     <>

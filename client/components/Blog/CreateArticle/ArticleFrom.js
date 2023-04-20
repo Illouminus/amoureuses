@@ -81,33 +81,34 @@ export const ArticleForm = () => {
             <h2 className={cls.title}>Créer un article</h2>
             <div className={cls.container}>
                 <div className={cls.containerAdding}>
-                    <ButtonProfile
-                        onClick={() => addBlock("title")}
-                        text={"Ajouter un bloc Title"}
-                        width={"300px"}
-                    />
-                    <ButtonProfile
-                        onClick={() => addBlock("subTitle")}
-                        text={"Ajouter un bloc SubTitle"}
-                        width={"300px"}
-                    />
-                    <ButtonProfile
-                        onClick={() => addBlock("text")}
-                        text={"Ajouter un bloc de texte"}
-                        width={"300px"}
-                    />
-                    <ButtonProfile
-                        onClick={() => addBlock("image")}
-                        text={"Ajouter un bloc photo"}
-                        width={"300px"}
-                    />
-                    <ButtonProfile
-                        onClick={handleSubmit}
-                        text={"Envoyer"}
-                        marginTop={"100px"}
-                        width={"300px"}
-                    />
-                </div>
+                        <ButtonProfile
+                            onClick={() => addBlock("title")}
+                            text={"Ajouter un bloc Title"}
+                            width={"300px"}
+                        />
+                        <ButtonProfile
+                            onClick={() => addBlock("subTitle")}
+                            text={"Ajouter un bloc SubTitle"}
+                            width={"300px"}
+                        />
+                        <ButtonProfile
+                            onClick={() => addBlock("text")}
+                            text={"Ajouter un bloc de texte"}
+                            width={"300px"}
+                        />
+                        <ButtonProfile
+                            onClick={() => addBlock("image")}
+                            text={"Ajouter un bloc photo"}
+                            width={"300px"}
+                        />
+                        <ButtonProfile
+                            onClick={handleSubmit}
+                            text={"Envoyer"}
+                            marginTop={"100px"}
+                            width={"300px"}
+                        />
+                    </div>
+
                 <DndProvider backend={HTML5Backend}>
                     <div className={cls.containerRender}>
                         {blocks.map((block, index) => (
