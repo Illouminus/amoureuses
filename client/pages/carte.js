@@ -16,8 +16,8 @@ const carte = () => {
 		<div>
 			<Head>
 				<title>Carte</title>
-				<meta name="keywords" content="vin, bar, soiree, drinks, drink, night, vine"/>
-				<meta name="description" content="this is a website of the vine bar"/>
+				<meta name="description" content="C'est notre carte de vins"/>
+				<meta name="keywords" content="Carte à vin, liste de vins, vin"/>
 				<meta charSet="utf-8"/>
 			</Head>
 			<MainNavbar  active={active} setActive={setActive}/>
