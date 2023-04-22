@@ -12,8 +12,13 @@ async function handler(req, res) {
         const client = await dbConnect();
         if (client) {
             const { id } = req.query;
-            await Article.findByIdAndRemove(id);
-            res.status(200).json({ message: "Article deleted successfully" });
+            const deleting = await Article.findByIdAndRemove(id);
+            if (deleting) {
+                res.status(200).json({ message: "Article deleted successfully" });
+            } else {
+                res.status(401).json({ error: "Error deleting article" });
+            }
+
         } else {
             res.status(500).json({ message: "Server Error" });
         }
