@@ -16,6 +16,9 @@ async function handler(req, res) {
             res.status(200).json({
                 _id: article._id,
                 blocks: article.blocks,
+                title: article.title,
+                description: article.description,
+                keywords: article.keywords
             });
         } else {
             res.status(405).json({ message: "Method not allowed" });
