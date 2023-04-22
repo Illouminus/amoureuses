@@ -45,6 +45,7 @@ export async function getStaticProps() {
             props: {
                 tastings
             },
+            revalidate: 60,
         };
 }
 export default degustations
