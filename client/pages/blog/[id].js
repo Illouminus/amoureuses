@@ -7,9 +7,12 @@ import {MainFooter} from "../../components/Footers/MainFooter/MainFooter";
 import cls from '../../styles/blog.module.scss'
 
 const SinglePost = ({ article }) => {
+    console.log('ARTICLE INTO BLOG', article)
     const [active, setActive] = useState(false);
+
     return (
         <>
+            <title>Accueil</title>
             <MainNavbar active={active} setActive={setActive} />
             <Article article={article}/>
             <MainFooter />
