@@ -4,7 +4,7 @@ import {Article} from "../../components/Blog/Article/Article";
 import {MainNavbar} from "../../components/Navbars/MainNavbar/MainNavbar";
 import {useState} from "react";
 import {MainFooter} from "../../components/Footers/MainFooter/MainFooter";
-import cls from '../../styles/blog.module.scss'
+
 
 const SinglePost = ({ article }) => {
     console.log('ARTICLE INTO BLOG', article)
@@ -23,10 +23,21 @@ const SinglePost = ({ article }) => {
 
 export default SinglePost;
 
-export async function getServerSideProps(context) {
-    const { id } = context.query;
+export async function getStaticPaths() {
     const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blog/get-article?id=${id}`
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blog/get-blogs`
+    );
+    const blogs = await res.data;
+    const paths = blogs.map((post) => ({
+        params: { id: post._id },
+    }))
+    return { paths, fallback: false }
+}
+
+export async function getStaticProps({params}) {
+
+    const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blog/get-article?id=${params.id}`
     );
     const article = await res.data;
 
