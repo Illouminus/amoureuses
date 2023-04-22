@@ -38,7 +38,7 @@ export const degustations = ({tastings}) => {
 }
 
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
         const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tasting/get-tastings`);
         const tastings = await res.data;
         return {
