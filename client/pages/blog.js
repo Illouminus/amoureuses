@@ -7,6 +7,7 @@ import cls from "../styles/blog.module.scss";
 import Head from "next/head";
 
 const Blog = ({ blogs }) => {
+    console.log('COMMINE BLOGSALL', blogs)
     const [articles, setArticles] = useState(blogs);
     const [active, setActive] = useState(false);
 
