@@ -4,15 +4,20 @@ import {Article} from "../../components/Blog/Article/Article";
 import {MainNavbar} from "../../components/Navbars/MainNavbar/MainNavbar";
 import {useState} from "react";
 import {MainFooter} from "../../components/Footers/MainFooter/MainFooter";
+import Head from "next/head";
 
 
 const SinglePost = ({ article }) => {
-    console.log('ARTICLE INTO BLOG', article)
+    console.log('ARTICLE INTO', article)
     const [active, setActive] = useState(false);
 
     return (
         <>
-            <title>Accueil</title>
+            <Head>
+                <title>{article.title}</title>
+                <meta name="description" content={article.description}/>
+                <meta name="keywords" content={article.keywords}/>
+            </Head>
             <MainNavbar active={active} setActive={setActive} />
             <Article article={article}/>
             <MainFooter />
@@ -31,7 +36,7 @@ export async function getStaticPaths() {
     const paths = blogs.map((post) => ({
         params: { id: post._id },
     }))
-    return { paths, fallback: false }
+    return { paths, fallback: "blocking" }
 }
 
 export async function getStaticProps({params}) {

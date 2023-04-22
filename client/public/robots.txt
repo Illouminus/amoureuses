@@ -1,6 +1,4 @@
 User-Agent: *
-Allow: /carte
-Allow: /degustations
 Allow: /
 Disallow: /lk
 Disallow: /login

@@ -6,6 +6,9 @@ const ArticleSchema = new Schema({
         type: [Block.schema],
         required: false,
     },
+    title: String,
+    description: String,
+    keywords: String,
 });
 
 const Article = models.Article || model('Article', ArticleSchema)

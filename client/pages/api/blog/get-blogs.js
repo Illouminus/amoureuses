@@ -10,6 +10,9 @@ async function handler(req, res) {
                 return {
                     _id: article._id,
                     blocks: article.blocks,
+                    title: article.title,
+                    description: article.description,
+                    keywords: article.keywords
                 };
             });
             res.status(200).json(articlesWithId);
