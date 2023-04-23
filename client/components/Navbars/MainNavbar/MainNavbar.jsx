@@ -36,7 +36,7 @@ export const MainNavbar = ({active, setActive}) => {
                 <Image src={smallLogo} alt={smallLogo}  className={cls.logoImage} />
             </a>
             <div className={classNames(cls.toggle, {[cls.active]: active})} onClick={activeHedlear}/>
-            <div className={classNames(cls.navbar, {[cls.active]: active})} >
+            <div className={classNames(cls.navbar, {[cls.active]: active})} onClick={activeHedlear}>
                 <ul>
                     {MENU_LIST.map((item) => (
                         <li key={item.text}><NavItem href={item.href} text={item.text}/></li>
