@@ -1,5 +1,5 @@
 // components/ArticleCard.js
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Link from "next/link";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -8,20 +8,30 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import {useSession} from "next-auth/react";
-
 export const ArticleCard = ({ article, onDelete}) => {
+    const [shouldRender, setShouldRender] = useState(false);
     const titleBlock = article.blocks.find((block) => block.type === "title");
     const textBlock = article.blocks.find((block) => block.type === "text");
     const imageBlock = article.blocks.find((block) => block.type === "image");
     const {status, data} = useSession()
     const login = status === "authenticated"
 
+    useEffect(() => {
+        setShouldRender(true);
+    }, []);
+
+    const createMarkup = (html) => {
+        return { __html: html };
+    };
     const truncateText = (text, maxLength) => {
         if (text.length <= maxLength) return text;
+
         return text.slice(0, maxLength) + "...";
     };
     const handleDelete = () => {
-        onDelete(article._id);
+        if (shouldRender) {
+            onDelete(article._id);
+        }
     };
     return (
         <Card sx={{ maxWidth: 345, minWidth: 345, marginBottom: 4, margin: "40px" }}>
@@ -39,9 +49,7 @@ export const ArticleCard = ({ article, onDelete}) => {
                     </Typography>
                 )}
                 {textBlock && (
-                    <Typography variant="body2" color="text.secondary">
-                        {truncateText(textBlock.content, 200)}
-                    </Typography>
+                    <Typography variant="body2" color="text.secondary" component="div" dangerouslySetInnerHTML={createMarkup(truncateText(textBlock.content, 200))} />
                 )}
             </CardContent>
             <CardActions>
