@@ -28,16 +28,13 @@ export const LoginForm = () => {
             password,
             redirect: false,
         })
-
+        console.log(response)
         if (response.ok) {
             setStatusLogin({
                 status: 'success',
                 message: 'success login'
             })
-            setOpen(true)
-            setTimeout(() => {
-                router.push('/')
-            }, 500)
+               await router.push('/')
         } else {
             setStatusLogin({
                 status: 'error',
@@ -62,7 +59,7 @@ export const LoginForm = () => {
                 </form>
             </div>
 
-            <SnackBar open={open} status={statusLogin.status}  message={statusLogin.message}/>
+            <SnackBar open={open} status={statusLogin.status} message={statusLogin.message}/>
         </>
 
 

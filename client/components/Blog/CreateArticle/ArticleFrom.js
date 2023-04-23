@@ -6,10 +6,15 @@ import axios from "axios";
 import cls from "./ArticleForm.module.scss";
 import { ButtonProfile } from "../../ButtonProfile/ButtonProfile";
 import {DraggableBlock} from "./Blocs/DraggableBlock";
+import SnackBar from "../../SnackBar";
 
-export const ArticleForm = () => {
+export const ArticleForm = ({setIsModalArticleOpen}) => {
     const [blocks, setBlocks] = useState([]);
-    console.log('СМОТРИМ НА БЛОКИ', blocks)
+    const [open, setOpen] = useState(false);
+    const [status, setStatus] = useState({
+        status: '',
+        message:''
+    })
     const BUCKET_URL = "https://les-amoureuses.s3.eu-west-3.amazonaws.com/";
 
     const addBlock = (type) => {
@@ -74,6 +79,21 @@ export const ArticleForm = () => {
 
     const handleSubmit = async() => {
         const response = await axios.post('/api/blog/add', {blocks})
+        if (response.status === 200) {
+            setStatus({
+                status: 'success',
+                message: `L'article à bien été ajoute`
+            })
+            setTimeout(() => {
+                setIsModalArticleOpen(false)
+            }, 1000)
+        } else {
+            setStatus({
+                status: 'error',
+                message: `Une erreur est survenue`
+            })
+        }
+        setOpen(true)
     }
 
     return (
@@ -126,6 +146,7 @@ export const ArticleForm = () => {
                     </div>
                 </DndProvider>
             </div>
+            <SnackBar open={open} status={status.status} message={status.message}/>
         </>
     );
 };

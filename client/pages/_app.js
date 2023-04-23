@@ -2,6 +2,7 @@ import '../styles/global.css'
 import { SessionProvider } from "next-auth/react"
 import Router from "next/router"
 import {useEffect, useState} from "react";
+import 'react-quill/dist/quill.snow.css';
 import {Loader} from "../components/Loader/Loader";
 import Head from 'next/head'
 
@@ -29,7 +30,7 @@ export default function MyApp({ Component, pageProps }) {
 		<Head>
 			<title>Les Amoureuses bar à vin Paris</title>
 			<meta name="description" content="le meilleur bar a vin de paris. Les Amoureuses. Bar à vin Les Amoureuses.
-			 Bar à vin Paris. Dégustation de vin à Paris. Passer une soirée en amoureux. Soirée à Paris."/>
+			 Bar à vin Paris. Dégustation de vin à Paris. Passer une soirée en amoureux. Soirée à Paris. soirée en amoureux"/>
 			<link rel="shortcut icon" href="/favicon.png" />
 			<meta name="keywords" content="Bar à vin, achat vin, Les Amoureuses,  bar à vin les amoureuses, passer une soirée, degustation de vin, bar à vin Paris, bar Paris, belle soirée, evénement sur paris"/>
 			<meta name="theme-color" content="##5e5b46" />

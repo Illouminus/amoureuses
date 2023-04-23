@@ -1,24 +1,28 @@
-import React from 'react';
-import cls from './Article.module.scss'
+import React, { useState, useEffect } from 'react';
+import cls from './Article.module.scss';
 
 export const Article = ({ article }) => {
-    console.log("ПРИЛЕТАЕТ В АРТИКЛЬ",article )
+    const [localArticle, setLocalArticle] = useState(null);
+
+    useEffect(() => {
+        setLocalArticle(article);
+    }, []);
+
     return (
         <div className={cls.containerBog}>
             <div className={cls.container}>
-                {article.blocks.map((block) => {
+                {localArticle && localArticle.blocks.map((block) => {
                     switch (block.type) {
                         case 'title':
                             return (
                                 <React.Fragment key={block.id}>
                                     <h1 className={cls.title}>{block.content}</h1>
                                 </React.Fragment>
-
                             );
                         case 'text':
                             return (
                                 <React.Fragment key={block.id}>
-                                    <p className={cls.textBlock}>{block.content}</p>
+                                    <p className={cls.textBlock} dangerouslySetInnerHTML={{ __html: block.content }} />
                                 </React.Fragment>
                             );
                         case 'subTitle':
@@ -31,18 +35,15 @@ export const Article = ({ article }) => {
                             return (
                                 <React.Fragment key={block.id}>
                                     <div className={cls.blockImage}>
-                                        <img src={block.src}  alt={block.alt}/>
+                                        <img src={block.src} alt={block.alt} />
                                     </div>
-
                                 </React.Fragment>
                             );
                         default:
                             return null;
                     }
                 })}
-
             </div>
         </div>
-
     );
 };

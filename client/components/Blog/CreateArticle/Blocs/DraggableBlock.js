@@ -1,5 +1,5 @@
 // DraggableBlock.js
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { useDrag, useDrop } from "react-dnd";
 import {TextBlock} from "./TextBlock";
 import {ImageBlock} from "./ImageBlock";
@@ -7,7 +7,20 @@ import {TitleBlock} from "./TitleBlock";
 import {SubtitleBlock} from "./SubtitleBlock";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { AltBlock } from "./AltBlock";
-export const DraggableBlock = ({ block, index, moveBlock, updateBlock, handleImageUpload, removeBlock }) => {
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.snow.css";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+export const DraggableBlock = ({
+                                   block,
+                                   index,
+                                   moveBlock,
+                                   updateBlock,
+                                   handleImageUpload,
+                                   removeBlock,
+                               }) => {
+    const [value, setValue] = useState(block.content || "");
+
+
     const [{ isDragging }, drag] = useDrag({
         type: "block",
         item: { id: block.id, index },
@@ -21,7 +34,6 @@ export const DraggableBlock = ({ block, index, moveBlock, updateBlock, handleIma
         hover(item, monitor) {
             const dragIndex = item.index;
             const hoverIndex = index;
-
             if (dragIndex === hoverIndex) {
                 return;
             }
@@ -42,10 +54,15 @@ export const DraggableBlock = ({ block, index, moveBlock, updateBlock, handleIma
         switch (block.type) {
             case "text":
                 return (
-                    <TextBlock
-                        content={block.content}
-                        onChange={(content) => updateBlock(block.id, { content })}
-                    />
+
+                        <ReactQuill
+                            value={value}
+                            onChange={(content) => {
+                                setValue(content);
+                                updateBlock(block.id, { content });
+                            }}
+                        />
+
                 );
             case "image":
                 return (
@@ -86,7 +103,9 @@ export const DraggableBlock = ({ block, index, moveBlock, updateBlock, handleIma
     };
 
     return (
-        <div ref={(node) => drag(drop(node))} style={{ opacity: isDragging ? 0.5 : 1 }}>
+        <div
+            ref={(node) => drag(drop(node))}
+            style={{ opacity: isDragging ? 0.5 : 1 }}>
             {renderBlock(block)}
                 <DeleteOutlineIcon onClick={handleRemoveBlock} cursor={"pointer"}/>
         </div>
