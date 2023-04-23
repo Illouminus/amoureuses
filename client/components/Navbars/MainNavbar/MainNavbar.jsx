@@ -30,6 +30,7 @@ export const MainNavbar = ({active, setActive}) => {
             { text: "Connexion", href: '/login' },
             { text: "Blog", href: '/blog' }, ]
 
+
     return (
         <nav className={cls.nav} >
             <a href="/" className={cls.logo}>
