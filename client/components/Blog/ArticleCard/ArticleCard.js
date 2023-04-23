@@ -35,7 +35,7 @@ export const ArticleCard = ({ article, onDelete}) => {
         }
     };
     return (
-        <Card sx={{ maxWidth: 345, minWidth: 345, marginBottom: 4, margin: "40px" }} className={cls.card}>
+        <Card sx={{ maxWidth: 345, minWidth: 345 }} className={cls.card}>
             {imageBlock && (
                 <CardMedia
                     sx={{ height: 200 }}
