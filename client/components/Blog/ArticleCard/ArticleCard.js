@@ -8,6 +8,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import {useSession} from "next-auth/react";
+import cls from './ArticleCard.module.scss'
 export const ArticleCard = ({ article, onDelete}) => {
     const [shouldRender, setShouldRender] = useState(false);
     const titleBlock = article.blocks.find((block) => block.type === "title");
@@ -34,7 +35,7 @@ export const ArticleCard = ({ article, onDelete}) => {
         }
     };
     return (
-        <Card sx={{ maxWidth: 345, minWidth: 345, marginBottom: 4, margin: "40px" }}>
+        <Card sx={{ maxWidth: 345, minWidth: 345, marginBottom: 4, margin: "40px" }} className={cls.card}>
             {imageBlock && (
                 <CardMedia
                     sx={{ height: 200 }}
