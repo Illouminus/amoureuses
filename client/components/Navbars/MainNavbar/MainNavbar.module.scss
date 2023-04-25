@@ -5,10 +5,11 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  background: rgba(1, 0, 0, 0.67);
+  background: rgba(1, 0, 0, 0.8);
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05 );
   overflow: hidden;
   z-index: 1000;
+  padding-top: env(safe-area-inset-top)
 }
 
 .logo {

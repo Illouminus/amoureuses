@@ -23,10 +23,10 @@ export const degustations = ({tastings}) => {
         return (
             <>
                 <Head>
-                    <title>Degustations</title>
-                    <meta name="description" content="La liste des degustations à venir"/>
-                    <meta name="keywords" content="Degustations, tasting, vins, Faire une degustation"/>
-                    <meta charSet="utf-8"/>
+                    <title>Dégustations chez Les Amoureuses - Bar à Vin à Paris</title>
+                    <meta name="description" content="Explorez la liste des dégustations à venir chez Les Amoureuses, le meilleur bar à vin de Paris. Découvrez et apprenez-en davantage sur les vins à travers des événements de dégustation passionnants et éducatifs." />
+                        <meta name="keywords" content="Dégustations, dégustation de vins, Les Amoureuses, bar à vin Paris, événements de dégustation, dégustation de vins à Paris, cave à vin Paris, soirée dégustation, expérience de dégustation" />
+                            <meta charSet="utf-8"/>
                 </Head>
                 <MainNavbar  active={active} setActive={setActive} />
                 <WineTastingList tastings={tastings}/>

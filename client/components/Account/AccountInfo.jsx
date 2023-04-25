@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import { Typography, TextField, Button } from "@mui/material";
+import React from "react";
+import {  TextField } from "@mui/material";
 import cls from './Account.module.scss'
 const AccountInfo = ({ user, isEditable, onSubmit, firstName, handleFirstNameChange, lastName, handleLastNameChange }) => {
 
 
     return (
         <div className={cls.containerAccountInfo}>
-
             <TextField
                 label="Login"
                 value={user.login}

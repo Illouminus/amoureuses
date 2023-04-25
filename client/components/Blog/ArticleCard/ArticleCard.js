@@ -1,4 +1,3 @@
-// components/ArticleCard.js
 import React, {useEffect, useState} from "react";
 import Link from "next/link";
 import Card from "@mui/material/Card";
@@ -38,6 +37,7 @@ export const ArticleCard = ({ article, onDelete}) => {
         <Card sx={{ maxWidth: 345, minWidth: 345 }} className={cls.card}>
             {imageBlock && (
                 <CardMedia
+
                     sx={{ height: 200 }}
                     image={imageBlock.src}
                     title={imageBlock.content}

@@ -11,8 +11,8 @@ export const WineTastingItem = ({ wineTasting }) => {
             <div>{formatDateToFrench(date)}</div>
             <div className={cls.container}>
                 <div className={cls.descriptionConatainer}>
-                    <div className={cls.title}>{title}</div>
-                    <div className={cls.description}>{description}</div>
+                    <h2 className={cls.title}>{title}</h2>
+                    <p className={cls.description}>{description}</p>
                     <div className={cls.priceContainer}>
                         <div>Prix : {price} €</div>
                         <div>Places : {places}</div>

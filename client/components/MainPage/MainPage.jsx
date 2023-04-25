@@ -45,7 +45,6 @@ export const MainPage = () => {
                 </div>
                 <button className={`${cls.buttonLaCarte}`} onClick={handleButtonClick}>La carte</button>
             </div>
-
         <MainFooter />
         </>
     )

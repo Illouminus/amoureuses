@@ -29,6 +29,7 @@ function generateSiteMap(posts) {
             return `
        <url>
            <loc>${`${process.env.NEXT_PUBLIC_API_BASE_URL}/blog/${_id}`}</loc>
+            <priority>0.5</priority>
        </url>
      `;
         })
