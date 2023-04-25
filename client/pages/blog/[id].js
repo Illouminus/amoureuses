@@ -8,7 +8,6 @@ import Head from "next/head";
 
 
 const SinglePost = ({ article }) => {
-    console.log('ARTICLE INTO', article)
     const [active, setActive] = useState(false);
 
     return (

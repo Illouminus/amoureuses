@@ -3,7 +3,7 @@ import {useSession} from "next-auth/react";
 import { isMobile } from "react-device-detect";
 import Image from "next/image";
 import smallLogo from '../../../public/img/logo.png'
-import NavItem from "../../NavItem";
+import NavItem from "./NavItem";
 const classNames = require('classnames');
 export const MainNavbar = ({active, setActive}) => {
     const {status, data} = useSession()

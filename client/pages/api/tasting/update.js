@@ -6,7 +6,6 @@ async function handler(req, res) {
         try {
             const { _id, date, title, description, price, places } = req.body;
             const client = await dbConnect();
-            console.log('BODY', req.body)
             if (client) {
                 const updatedTasting = await Tasting.findByIdAndUpdate(
                     _id,

@@ -9,25 +9,28 @@ import Head from "next/head";
 const Blog = ({ blogs }) => {
     const [articles, setArticles] = useState(blogs);
     const [active, setActive] = useState(false);
-    console.log('ALL BLOGS', blogs)
+
     const deleteArticle = async (id) => {
-        console.log('ID FOR DELETING FRONT', id)
         try {
-            await axios.delete(
+           const response =  await axios.delete(
                 `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blog/delete/${id}`
             );
-            setArticles(articles.filter((article) => article._id !== id));
+           if (response.status === 200) {
+               setArticles(articles.filter((article) => article._id !== id));
+               alert(`L'article à bien été supprime`)
+           }
+
         } catch (error) {
-            console.error("Error deleting article:", error);
+            alert(`Une erréur est surevenue lors de la suppresion de l'article`)
         }
     };
 
     return (
         <>
             <Head>
-                <title>Blog</title>
-                <meta name="description" content="Le blog. Notre selection des articles. Articles sur le vin."/>
-                <meta name="keywords" content="Articles vins, articles sur le bar, ensegnement vin"/>
+                <title>Blog Les Amoureuses - Conseils, astuces et actualités sur le vin</title>
+                <meta name="description" content="Découvrez le blog de Les Amoureuses, votre bar à vin à Paris, où nous partageons des conseils, astuces et actualités sur le monde du vin, la dégustation et les accords mets et vins." />
+                <meta name="keywords" content="blog Les Amoureuses, bar à vin Paris, conseils vin, astuces vin, actualités vin, dégustation de vin, accords mets et vins, vins naturels, vins biodynamiques, vinification, cave à vin" />
                 <meta charSet="utf-8"/>
             </Head>
             <MainNavbar active={active} setActive={setActive} />

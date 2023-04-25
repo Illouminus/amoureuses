@@ -17,7 +17,6 @@ async function handler(req, res) {
     if (client) {
         const user = await User.findOne({ _id: userId });
         const isPasswordValid = await bcrypt.compare(oldPassword, user.password);
-        console.log('isPasswordValid', isPasswordValid)
         if (!isPasswordValid) {
             res.status(401).json({ message: "Invalid password" });
             return;

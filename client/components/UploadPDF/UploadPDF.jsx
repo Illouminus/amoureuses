@@ -11,7 +11,6 @@ const UploadPDF = () => {
             name: acceptedFiles[0].name,
             type: acceptedFiles[0].type,
         });
-        console.log('FROM AWS???', data);
         const url = data.url;
 
         let { data: newData } = await axios.put(url, acceptedFiles[0], {
@@ -26,7 +25,6 @@ const UploadPDF = () => {
     }, []);
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
-
 
 
     return (

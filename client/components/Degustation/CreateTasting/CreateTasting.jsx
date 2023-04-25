@@ -32,14 +32,12 @@ export const CreateTasting = ({handleTasting}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            let photoUrl = '';
             let dataForm = { ...formData }
             if (file) {
                 let { data } = await axios.post("/api/tasting/upload-photo", {
                     name: file.name,
                     type: file.type,
                 });
-                console.log('dataIn', data)
                 let url = data.url;
                 let photoUrl = BUCKET_URL + file.name;
                 dataForm = { ...formData, photo: photoUrl };
@@ -53,7 +51,6 @@ export const CreateTasting = ({handleTasting}) => {
 
 
             const response = await axios.post('/api/tasting/add', dataForm);
-            console.log(response.data);
             if (response.status === 200) {
                 setStatus({
                     status: 'success',

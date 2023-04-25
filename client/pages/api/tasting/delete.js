@@ -1,4 +1,3 @@
-// pages/api/tasting/delete.js
 import dbConnect from "../../../utils/mangoDB";
 import Tasting from "../../../models/Tasting";
 

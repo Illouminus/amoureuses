@@ -6,7 +6,6 @@ import User from "../../../../models/User"
 
 async function handler(req, res) {
     const userId = req.query.userId;
-    console.log('REQ BODY BACK', req.body)
     try {
         const avatarUrl = req.body.url;
         const client = await dbConnect();

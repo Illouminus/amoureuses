@@ -8,7 +8,6 @@ const Avatar = (props) => {
     const {
         src,
         onChange,
-        isEditable,
         onDrop,
         isModalAvatarOpen
     } = props;

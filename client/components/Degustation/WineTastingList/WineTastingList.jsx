@@ -65,7 +65,6 @@ export const WineTastingList = ({ tastings }) => {
 
     return (
         <>
-
             <div className={cls.container}>
                 <div className={cls.filterOptions}>
                     <ButtonProfile
