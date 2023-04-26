@@ -20,7 +20,7 @@ export const MainFooter = () => {
                 <div className={cls.social}>
                     <Image
                         src={mail}
-                        alt="Icon of email"
+                        alt="Nous contacter par le formualire de contact"
                         priority="high"
                         className={cls.filterColorIcon}
                         onClick={setOpen}
@@ -28,7 +28,7 @@ export const MainFooter = () => {
                     />
                     <Link href={'https://instagram.com/lesamoureuses.bar?igshid=YmMyMTA2M2Y='} target={"_blank"} ><Image
                        src={instagram}
-                       alt="Icon of Instagram"
+                       alt="Nous suivre sur instargar"
                        priority="high"
                        className={cls.filterColorIcon}
                       />
@@ -38,7 +38,7 @@ export const MainFooter = () => {
 
                     <Link href={'https://t.me/Blueberrrynights'} target={"_blank"} ><Image
                         src={telegram}
-                        alt="Icon of Telegram"
+                        alt="Nous contacter via Telegram"
                         priority="high"
                         className={cls.filterColorIcon}
                     />
