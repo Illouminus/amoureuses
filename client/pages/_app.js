@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import 'react-quill/dist/quill.snow.css';
 import {Loader} from "../components/Loader/Loader";
 import Head from 'next/head'
+import { Analytics } from '@vercel/analytics/react';
 
 
 export default function MyApp({ Component, pageProps }) {
@@ -62,6 +63,7 @@ export default function MyApp({ Component, pageProps }) {
 					<Component {...pageProps} />
 				</SessionProvider>
 			)}
+			<Analytics />
 		</>
 	)
 }
