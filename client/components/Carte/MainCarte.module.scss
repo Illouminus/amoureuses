@@ -1,0 +1,104 @@
+.backgroundCarte {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translate(0, -50%);
+  height: 94%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow-y: auto; /* changed to 'auto' */
+  max-width: 550px;
+  min-width: 550px;
+  box-sizing: border-box;
+}
+
+.categoryContainer{
+  max-height: 500px;
+  margin-top: 20px;
+  max-width: 500px;
+  min-width: 500px;
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .backgroundCarte{
+    left: 5%;
+    min-width: 250px;
+  }
+  .categoryContainer{
+    min-width: 300px;
+    height: 400px;
+  }
+}
+
+
+
+.categoryContainer::-webkit-scrollbar {
+  width: 3px; /* scrollbar width */
+
+}
+
+.categoryContainer::-webkit-scrollbar-thumb {
+  background-color: #D0B791 ; /* scrollbar color */
+  border-radius: 10px; /* scrollbar border radius */
+  height: 5px;
+
+}
+
+.categoryContainer::-webkit-scrollbar-track {
+  background-color: #65503D; /* scrollbar track color */
+  height: 5px;
+}
+
+
+.contentContainer{
+  margin: 200px 20px 0px 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.contentContainer h1 {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  overflow: hidden;
+}
+
+.containerDeleteCategory{
+  display: flex;
+  flex-direction: column;
+}
+.deleteCategory{
+  border: 1px dotted #65503D;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #864646;
+}
+.buttonAddArticle{
+  text-decoration: none;
+  color: #65503D;
+  margin-top: 20px;
+  height: 30px;
+  width: 30px;
+  filter: invert(24%) sepia(13%) saturate(10%) hue-rotate(19deg) brightness(92%) contrast(93%);
+}
+
+.descriptionVente{
+  font-size: 14px;
+  margin: 20px 20px;
+  filter: invert(24%) sepia(13%) saturate(10%) hue-rotate(19deg) brightness(92%) contrast(93%);
+}
+
+.backButton{
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  height: 40px;
+  width: 40px;
+  z-index: 5;
+  filter: invert(100%) sepia(0%) saturate(2%) hue-rotate(239deg) brightness(112%) contrast(101%);
+}
