@@ -32,25 +32,28 @@ export const MainPage = () => {
         <>
         <MainNavbar active={active} setActive={setActive}/>
         <MainPageBackground onImageLoad={handleImageLoad} loading={loading} />
-            <div className={classNames(cls.container, {[cls.active]: active})}>
-                <h1 style={{opacity: "0"}}>Les Amoureuses - un bar à vin chaleureux au cœur de Paris</h1>
-                <h2 style={{opacity: "0"}}>Les Amoureuses vous invite à plonger dans l'ambiance d'un véritable bar à vin parisien, où la convivialité et la passion pour le vin règnent en maîtres. Découvrez notre sélection de vins soigneusement choisis et savourez des accords mets et vins raffinés dans un cadre élégant et accueillant.</h2>
-                <div className={cls.container_mainContent}>
-                    {!loading && <Image src={logo} alt={'logo'} />}
-                </div>
-                <div className={cls.description}>
-                    <div className={cls.description_clock}>
-                        <Image src={clock} alt={`Nos horraires d'ouverture`} className={cls.clockDot}/>
-                        <p>Mercredi-Dimanche 18h - 00h</p>
+            <h1 style={{opacity: "0"}}>Les Amoureuses - un bar à vin chaleureux au cœur de Paris</h1>
+            <h2 style={{opacity: "0"}}>Les Amoureuses vous invite à plonger dans l'ambiance d'un véritable bar à vin parisien, où la convivialité et la passion pour le vin règnent en maîtres. Découvrez notre sélection de vins soigneusement choisis et savourez des accords mets et vins raffinés dans un cadre élégant et accueillant.</h2>
+            {!loading &&
+                <div className={classNames(cls.container, {[cls.active]: active})}>
+                    <div className={cls.container_mainContent}>
+                        <Image src={logo} alt={'logo'} />
+                    </div>
+                    <div className={cls.description}>
+                        <div className={cls.description_clock}>
+                            <Image src={clock} alt={`Nos horraires d'ouverture`} className={cls.clockDot}/>
+                            <p>Mercredi-Dimanche 18h - 00h</p>
 
+                        </div>
+                        <div className={cls.description_location}>
+                            <Image src={map} alt='Nous trouver sur la carte' className={cls.clockDot}/>
+                            <Link href={"https://goo.gl/maps/nkrz51aR41jbDTwu6"} target={"_blank"}><p>3 rue des Tournelles, 75004 Paris</p></Link>
+                        </div>
                     </div>
-                    <div className={cls.description_location}>
-                        <Image src={map} alt='Nous trouver sur la carte' className={cls.clockDot}/>
-                        <Link href={"https://goo.gl/maps/nkrz51aR41jbDTwu6"} target={"_blank"}><p>3 rue des Tournelles, 75004 Paris</p></Link>
-                    </div>
+                    <button className={`${cls.buttonLaCarte}`} onClick={handleButtonClick}>La carte</button>
                 </div>
-                <button className={`${cls.buttonLaCarte}`} onClick={handleButtonClick}>La carte</button>
-            </div>
+            }
+
         <MainFooter />
         </>
     )
