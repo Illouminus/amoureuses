@@ -14,6 +14,11 @@ const classNames = require('classnames');
 export const MainPage = () => {
     const [active, setActive] = useState(false)
     const [downloadLink, setDownloadLink] = useState("");
+    const [loading, setLoading] = useState(true)
+
+    const handleImageLoad = () => {
+        setLoading(false);
+    };
     const { push } = useRouter();
     const handleButtonClick = () => {
         if (isMobile) {
@@ -26,12 +31,12 @@ export const MainPage = () => {
     return (
         <>
         <MainNavbar active={active} setActive={setActive}/>
-        <MainPageBackground />
+        <MainPageBackground onImageLoad={handleImageLoad} loading={loading} />
             <div className={classNames(cls.container, {[cls.active]: active})}>
                 <h1 style={{opacity: "0"}}>Les Amoureuses - un bar à vin chaleureux au cœur de Paris</h1>
                 <h2 style={{opacity: "0"}}>Les Amoureuses vous invite à plonger dans l'ambiance d'un véritable bar à vin parisien, où la convivialité et la passion pour le vin règnent en maîtres. Découvrez notre sélection de vins soigneusement choisis et savourez des accords mets et vins raffinés dans un cadre élégant et accueillant.</h2>
                 <div className={cls.container_mainContent}>
-                        <Image src={logo} alt={'logo'} />
+                    {!loading && <Image src={logo} alt={'logo'} />}
                 </div>
                 <div className={cls.description}>
                     <div className={cls.description_clock}>
