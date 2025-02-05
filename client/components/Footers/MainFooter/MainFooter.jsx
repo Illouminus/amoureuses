@@ -26,19 +26,9 @@ export const MainFooter = () => {
 						onClick={setOpen}
 
 					/>
-					<Link href={'mailto:pariswinesociety@gmail.com'} target={"_blank"} ><Image
+					<Link href={'https://instagram.com/lesamoureuses.bar?igshid=YmMyMTA2M2Y='} target={"_blank"} ><Image
 						src={instagram}
 						alt="Nous suivre sur instargar"
-						priority="high"
-						className={cls.filterColorIcon}
-					/>
-					</Link>
-
-
-
-					<Link href={'https://t.me/Blueberrrynights'} target={"_blank"} ><Image
-						src={telegram}
-						alt="Nous contacter via Telegram"
 						priority="high"
 						className={cls.filterColorIcon}
 					/>
